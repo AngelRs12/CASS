@@ -1,0 +1,313 @@
+@import url("https://fonts.cdnfonts.com/css/satoshi");
+
+:root {
+  --background-color-grad-1: #f2f3f4;
+  --background-color-grad-2: #dcdde2;
+
+  --header-background-color-grad1: #002855;
+  --header-background-color-grad2: #1f4685;
+  --header-font-color: rgb(255, 255, 255);
+  --header-font-color-hover: rgb(253, 3, 99);
+
+  --container-background-color: #fcfefe;
+  --card-background-color: white;
+
+  --input-border-color: #6fc7d6;
+  --input-background-color: #faffff;
+  --input-text-color: #083c45;
+
+  --button-background-color: #0466c8;
+  --button-background-color-hover: #023e7d;
+  --button-text-color: #b1bdd4;
+
+  --table-header-color: #001233;
+  --table-header-text-color: rgb(255, 255, 255);
+  --table-border-color: #ffffff;
+
+  --h1-color: #020349;
+  --h2-color: #0f2056;
+
+  --modal-background-color: #fcfefe;
+
+  --label-color: #0664c3 ;
+}
+
+body {
+  font-family: "Satoshi", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-color-grad-1);
+  background-image: linear-gradient(
+    160deg,
+    var(--background-color-grad-1) 0%,
+    var(--background-color-grad-2) 100%
+  );
+  background-attachment: fixed;
+}
+
+header {
+  background-color: var(--header-background-color-grad1);
+  background-image: linear-gradient(
+    19deg,
+    var(--header-background-color-grad1) 0%,
+    var(--header-background-color-grad2) 100%
+  );
+  background-attachment: fixed;
+  color: var(--header-font-color);
+  padding: 15px;
+  padding: 10px 20px;
+}
+
+.head-logos {
+  background-color: rgb(24, 22, 22);
+}
+a {
+  color: var(--header-font-color);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+main {
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  color: var(--h1-color);
+  font-weight: bold;
+}
+h2,
+h3,
+h4,
+h5 {
+  color: var(--h2-color);
+  font-weight: bold;
+}
+
+.doctores-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  width: 80%;
+  max-width: 45em;
+  background: #b5c5e6;
+  background: linear-gradient(
+    244deg,
+    rgba(181, 197, 230, 1) 0%,
+    rgba(242, 246, 252, 1) 88%
+  );
+  margin: 50px auto 0;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.campus-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.doctor-card {
+  border: 0;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+
+.hero-img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.container {
+  max-width: 25em;
+  background: var(--container-background-color);
+  margin: 50px auto 0;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  display: block;
+  justify-content: center;
+}
+
+.container-lar {
+  max-width: 70%;
+}
+.container-med {
+  max-width: 55%;
+}
+.container-smal {
+  max-width: 30%;
+}
+.graphs-med {
+  max-width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.graphs-sz {
+  max-height: 300px;
+  max-width: 300px;
+}
+
+.container-patients {
+  padding: 20px;
+  width: 80%;
+  max-width: 80em;
+  background: var(--container-background-color);
+  margin: 50px auto 0;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  display: block;
+}
+
+.subcontainer {
+  margin-bottom: 2em;
+  border-radius: 8px;
+  margin: 15px;
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+  display: block;
+}
+
+input,
+textarea,
+select {
+  border-radius: 5px;
+  border: 1px solid var(--input-border-color);
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: var(--input-background-color);
+  color: var(--input-text-color);
+}
+
+button {
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+  border: 0;
+  border-radius: 5px;
+}
+button:hover {
+  background-color: var(--button-background-color-hover);
+}
+
+label{
+  color: var(--button-background-color);
+}
+
+.navbar-brand {
+  color: var(--header-font-color);
+  font-size: x-large;
+  text-align: center;
+}
+
+.nav-link {
+  color: var(--header-font-color);
+  font-size: large;
+  text-align: center;
+}
+
+h2 {
+  color: var(--h2-color);
+  font-size: x-large;
+  text-align: center;
+  padding: 8px;
+}
+
+table {
+  width: 100%;
+  table-layout: fixed;
+}
+thead {
+  background-color: var(--table-header-color);
+}
+th {
+  color: var(--table-header-text-color);
+}
+td{
+  word-break: BREAK-WORD;
+}
+
+
+.toggleDetailsBtn {
+  width: 50%;
+}
+
+textarea {
+  resize: none;
+}
+
+.btn-sz-lar {
+  width: 100%;
+}
+
+.btn-primary {
+  background-color: var(--button-background-color);
+  border: 0;
+}
+
+.btn-primary:hover {
+  background-color: var(--button-background-color-hover);
+}
+/*
+  .tbl-content {
+    height: 300px;
+    overflow-x: auto;
+    margin-top: 0px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }*/
+
+.hero-section {
+  background-color: #f8f9fa;
+  padding: 60px 20px;
+  text-align: center;
+}
+.hero-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+.fila-error {
+  background-color: #ff768f !important; 
+}
+
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .print-area, .print-area * {
+    visibility: visible;
+  }
+  .print-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  thead th {
+    background-color: var(--table-header-color) !important;
+    color: white !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .table th, .table td {
+    border: 1px solid #6b6a6a !important;
+  }
+  
+  .bg-primary-print {
+    background-color: var(--table-header-color) !important;
+    color: white !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}

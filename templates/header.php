@@ -4,9 +4,9 @@ if (session_status() === PHP_SESSION_NONE) session_start();
 
 <div class="py-3 head-logos">
   <div class="d-flex justify-content-center align-items-center flex-wrap gap-5">
-    <img src="../CASS/assets/ITCJ logo.png" alt="Imagen 2" height="60">
-    <img src="../CASS/assets/LOGO TECNM.png" alt="Imagen 3" height="60">
-    <img src="../CASS/assets/logo sep.png" alt="img 4" height="60">
+    <img src="/cass/assets/ITCJ logo.png" alt="Imagen 2" height="60">
+    <img src="/cass/assets/LOGO TECNM.png" alt="Imagen 3" height="60">
+    <img src="/cass/assets/logo sep.png" alt="img 4" height="60">
 
   </div>
 </div>
@@ -14,7 +14,7 @@ if (session_status() === PHP_SESSION_NONE) session_start();
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
     <div class="container-fluid">
-      <a class="navbar-brand" href="index.php">CASS</a>
+      <a class="navbar-brand" href="/cass/index.php">CASS</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -112,8 +112,8 @@ if (session_status() === PHP_SESSION_NONE) session_start();
         <!-- SESIÓN -->
         <ul class="navbar-nav ms-auto">
           <?php if (!isset($_SESSION["usuario"])): ?>
-            <li class="nav-item"><a class="nav-link" href="./src/login.php">Iniciar Sesión</a></li>
-            <li class="nav-item"><a class="nav-link" href="./src/registrate.php">Registrarse</a></li>
+            <li class="nav-item"><a class="nav-link" href="/cass/src/login.php">Iniciar Sesión</a></li>
+            <li class="nav-item"><a class="nav-link" href="/cass/src/registrate.php">Registrarse</a></li>
           <?php else: ?>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="usuarioDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

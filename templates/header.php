@@ -4,9 +4,9 @@ if (session_status() === PHP_SESSION_NONE) session_start();
 
 <div class="py-3 head-logos">
   <div class="d-flex justify-content-center align-items-center flex-wrap gap-5">
-    <img src="/cass/assets/ITCJ logo.png" alt="Imagen 2" height="60">
-    <img src="/cass/assets/LOGO TECNM.png" alt="Imagen 3" height="60">
-    <img src="/cass/assets/logo sep.png" alt="img 4" height="60">
+    <img src="../cass/assets/ITCJ logo.png" alt="Imagen 2" height="60">
+    <img src="../cass/assets/LOGO TECNM.png" alt="Imagen 3" height="60">
+    <img src="../cass/assets/logo sep.png" alt="img 4" height="60">
 
   </div>
 </div>

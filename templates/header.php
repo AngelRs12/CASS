@@ -4,16 +4,17 @@ if (session_status() === PHP_SESSION_NONE) session_start();
 
 <div class="py-3 head-logos">
   <div class="d-flex justify-content-center align-items-center flex-wrap gap-5">
-    <img src="../img/sep-blanco.png" alt="Imagen 2" height="60">
-    <img src="../img/TECNM-B.png" alt="Imagen 3" height="60">
-    <img src="../img/ITCJ-blanco.png" alt="" height="60">
+    <img src="../CASS/assets/ITCJ logo.png" alt="Imagen 2" height="60">
+    <img src="../CASS/assets/LOGO TECNM.png" alt="Imagen 3" height="60">
+    <img src="../CASS/assets/logo sep.png" alt="img 4" height="60">
+
   </div>
 </div>
 
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
     <div class="container-fluid">
-      <a class="navbar-brand" href="index.php">CuídaTec</a>
+      <a class="navbar-brand" href="index.php">CASS</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

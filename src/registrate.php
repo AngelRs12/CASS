@@ -7,6 +7,8 @@ if (isset($_GET['mensaje'])) {
 
 <!doctype html>
 <html lang="en">
+    
+  <link rel="stylesheet" href="/cass/styles/global.css">
     <head>
         <title>Title</title>
         <!-- Required meta tags -->

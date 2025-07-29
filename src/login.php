@@ -3,6 +3,7 @@
 <!doctype html>
 
 <html lang="en">
+    <link rel="stylesheet" href="/cass/styles/global.css">
     <head>
         <title>Title</title>
         <!-- Required meta tags -->
@@ -95,5 +96,7 @@
             integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
             crossorigin="anonymous"
         ></script>
+        
+         <?php include($_SERVER['DOCUMENT_ROOT'] . '/cass/templates/footer.php'); ?>
     </body>
 </html>

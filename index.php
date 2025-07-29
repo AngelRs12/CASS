@@ -3,6 +3,8 @@
 <!doctype html>
 
 <html lang="en">
+    
+  <link rel="stylesheet" href="/cass/styles/global.css">
     <head>
         <title>Title</title>
         <!-- Required meta tags -->
@@ -33,57 +35,10 @@
 
     <body>
         <div class = "container">
-            <div class="row">
-                <div class="col-md-12">
-                <br><br>
-                    <form action="" method="post">
-                        <div class="card">
-                            <div class="card-header">
-                                Inicio de Sesión
-                            </div>
-                                
-                            
-                            <div class="card-body">
-                            <?php if (isset($mensaje) && !empty($mensaje)) { ?>
-                                <div class="alert alert-danger" role="alert">
-                                    <strong><?php echo $mensaje; ?> </strong>
-                                </div>
-                            <?php } ?>
-
-                                <div class="mb-3">
-                                    <label for="" class="form-label">Usuario</label>
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        name="usuario"
-                                        id="usuario"
-                                        aria-describedby="helpId"
-                                        placeholder="Usuario"
-                                        value="<?php echo isset($_POST['usuario']) ? htmlspecialchars($_POST['usuario']) : ''; ?>"
-                                    />
-                                    <small id="helpId" class="form-text text-muted">Ingresa tu usuario</small>
-                                </div>
-                                
-                                <div class="mb-3">
-                                    <label for="" class="form-label">Contraseña</label>
-                                    <input
-                                        type="password"
-                                        class="form-control"
-                                        name="password"
-                                        id="password"
-                                        aria-describedby="helpId"
-                                        placeholder=""
-                                    />
-                                    <small id="helpId" class="form-text text-muted">Ingresa tu contraseña</small>
-                                </div>
-                                <small id="helpId" class="form-text text-muted">¿No tienes una cuenta? <a href="registrate.php">Registrate</a></small><br><br>
-                                    <button class="btn btn-primary">Iniciar Sesión</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div> 
-        </div>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam qui est neque facere sed voluptatem distinctio dolore, maiores consequuntur minima, nemo soluta cum optio expedita non. Iure itaque excepturi porro!
+    
+    </div>
+     <?php include($_SERVER['DOCUMENT_ROOT'] . '/cass/templates/footer.php'); ?>
         <script
             src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
             integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
@@ -95,7 +50,7 @@
             integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
             crossorigin="anonymous"
         ></script>
-     <?php include($_SERVER['DOCUMENT_ROOT'] . '/cass/templates/footer.php'); ?>
+    
 
     </body>
 </html>

@@ -74,7 +74,7 @@ if (session_status() === PHP_SESSION_NONE) session_start();
           <?php if (isset($_SESSION["usuario"])): ?>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="formulariosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Formularios en línea 🔒
+                Formularios en línea 
               </a>
               <ul class="dropdown-menu" aria-labelledby="formulariosDropdown">
                 <li><a class="dropdown-item" href="solicitud_soporte.php">Solicitud de soporte técnico</a></li>
@@ -111,8 +111,8 @@ if (session_status() === PHP_SESSION_NONE) session_start();
         <!-- SESIÓN -->
         <ul class="navbar-nav ms-auto">
           <?php if (!isset($_SESSION["usuario"])): ?>
-            <li class="nav-item"><a class="nav-link" href="signin.php">Iniciar Sesión</a></li>
-            <li class="nav-item"><a class="nav-link" href="registro.php">Registrarse</a></li>
+            <li class="nav-item"><a class="nav-link" href="./src/login.php">Iniciar Sesión</a></li>
+            <li class="nav-item"><a class="nav-link" href="./src/registrate.php">Registrarse</a></li>
           <?php else: ?>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="usuarioDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

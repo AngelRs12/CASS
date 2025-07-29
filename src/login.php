@@ -1,4 +1,4 @@
-<?php include ('templates/header.php');?>
+<?php include ('../templates/header.php');?>
 
 <!doctype html>
 
@@ -96,5 +96,4 @@
             crossorigin="anonymous"
         ></script>
     </body>
-    <?php include ('templates/footer.php');?>
 </html>

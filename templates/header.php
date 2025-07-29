@@ -25,9 +25,7 @@ if (session_status() === PHP_SESSION_NONE) session_start();
 
           <!-- INICIO -->
           <li class="nav-item ">
-            <a class="nav-link " href="#" id="inicioDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Inicio
-            </a>
+            <a class="nav-link" href="/cass/index.php">Inicio</a>
             
           </li>
 

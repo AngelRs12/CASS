@@ -8,3 +8,18 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
+
+
+
+/*footer*/
+
+
+.footer-container {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center;    /* Centra verticalmente */
+}
+.footer-row {
+    width: 50%;
+}
+

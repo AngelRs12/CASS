@@ -41,6 +41,6 @@
       </div>
     </div>
 
-    <hr class="border-light">
+
   </div>
 </footer>

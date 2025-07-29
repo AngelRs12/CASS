@@ -24,14 +24,11 @@ if (session_status() === PHP_SESSION_NONE) session_start();
         <ul class="navbar-nav">
 
           <!-- INICIO -->
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="inicioDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <li class="nav-item ">
+            <a class="nav-link " href="#" id="inicioDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Inicio
             </a>
-            <ul class="dropdown-menu" aria-labelledby="inicioDropdown">
-              <li><a class="dropdown-item" href="bienvenida.php">Bienvenida</a></li>
-              <li><a class="dropdown-item" href="accesos.php">Accesos Directos</a></li>
-            </ul>
+            
           </li>
 
           <!-- NOTICIAS Y EVENTOS -->

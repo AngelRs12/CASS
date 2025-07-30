@@ -7,7 +7,6 @@ if (isset($_GET['mensaje'])) {
 <!doctype html>
 
 <html lang="en">
-<link rel="stylesheet" href="/cass/styles/global.css">
 
 <head>
     <meta charset="UTF-8" />
@@ -28,15 +27,15 @@ if (isset($_GET['mensaje'])) {
                         <form action="" method="post">
                             <div class="card border-radius-card my-5">
                                 <div class="card-body">
-                                    <h5 class="card-title">Registrate</h5>
+                                    <h2>Registrate</h2>
                                     <div class="mb-3">
-                                        <label for="usuario" class="form-label">Correo Electronico</label>
+                                        <label for="usuario" class="form-label">Correo electrónico</label>
                                         <input
                                             type="text"
                                             class="form-control"
                                             name="usuario"
                                             id="usuario"
-                                            placeholder="Correo Electronico Institucional"
+                                            placeholder="Correo institucional"
                                             required />
                                     </div>
 
@@ -52,7 +51,7 @@ if (isset($_GET['mensaje'])) {
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="confirmar_contrasena" class="form-label">Confirmar Contraseña</label>
+                                        <label for="confirmar_contrasena" class="form-label">Confirmar contraseña</label>
                                         <input
                                             type="password"
                                             class="form-control"

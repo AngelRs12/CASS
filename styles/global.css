@@ -5,7 +5,70 @@
   --color-fondo: rgb(27, 23, 23);
 
 
+  --background-color-grad-1: #f2f3f4;
+  --background-color-grad-2: #dcdde2;
 
+  --header-background-color: rgb(27, 23, 23);
+  --header-font-color: rgb(255, 255, 255);
+
+  --container-background-color: #fcfefe;
+  --card-background-color: white;
+
+  --input-border-color: #8a140c;
+  --input-background-color: #fafffc;
+  --input-text-color: #2c0505;
+
+  --button-background-color: rgb(129, 0, 0);
+  --button-background-color-hover: rgb(73, 5, 5);
+
+  --button-text-color: rgb(238, 235, 221);
+
+  --button-background-color-primary: rgb(163, 1, 1);
+  --button-background-color-primary-hover: rgb(109, 0, 0);
+  
+  --button-background-color-secondary: rgb(61, 53, 53);
+  --button-background-color-secondary-hover: rgb(27, 25, 25);
+
+
+  --table-header-color: #001233;
+  --table-header-text-color: rgb(255, 255, 255);
+  --table-border-color: #ffffff;
+
+  --h1-color: rgb(44, 3, 3);
+  --h2-color:  rgb(66, 2, 2);
+  --h5-color:  rgb(255, 255, 255);
+
+  --modal-background-color: #fcfefe;
+
+  --label-color: rgb(100, 5, 5);
+
+
+}
+@import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+
+header, footer{
+  background-color: var(--header-background-color);
+  background-attachment: fixed;
+  padding: 15px;
+  padding: 10px 20px;
+}
+
+
+h1 {
+  color: var(--h1-color);
+  font-weight: bold;
+}
+h2,
+h3,
+h4 {
+  color: var(--h2-color);
+  font-weight: bold;
+}
+
+h5 {
+  color: var(--h5-color);
+  font-weight: bold;
 }
 
 
@@ -16,6 +79,7 @@ html, body {
 }
 
 body {
+  font-family: "Mandali", sans-serif;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -26,13 +90,12 @@ body {
     justify-content: center; /* Centra horizontalmente */
     align-items: center;    /* Centra verticalmente */
 }
+
 .footer-row {
     width: 50%;
 }
 
-.border-radiusbtn{
-  border-radius: 1rem 1rem 1rem 1rem;
-}
+
 
 .border-radius-card{
   border-radius: 1rem 1rem 1rem 1rem;
@@ -93,8 +156,88 @@ html, body {
             max-width: 600px;
         }
 
+.container-lar {
+  max-width: 70%;
+}
+.container-med {
+  max-width: 55%;
+}
+.container-smal {
+  max-width: 30%;
+}
 
-  
+.form-control:focus {
+  border-color: var(--input-border-color);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
+}
 
-/*footer*/
 
+label{
+  color: var(--label-color);
+}
+
+
+h2 {
+  color: var(--h2-color);
+  font-size: x-large;
+  text-align: center;
+  padding: 8px;
+}
+
+table {
+  width: 100%;
+  table-layout: fixed;
+}
+thead {
+  background-color: var(--table-header-color);
+}
+th {
+  color: var(--table-header-text-color);
+}
+td{
+  word-break: BREAK-WORD;
+}
+
+
+.btn-sz-lar {
+  width: 100%;
+}
+
+
+
+
+button {
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+  border: 0;
+  border-radius: 1rem 1rem 1rem 1rem;
+}
+button:hover {
+  background-color: var(--button-background-color-hover);
+}
+
+.btn-primary {
+  background-color: var(--button-background-color-primary);
+  border: 0;
+}
+
+.btn-primary:hover {
+  background-color: var(--button-background-color-primary-hover);
+  border: 0;
+}
+
+.btn-secondary {
+  background-color: var(--button-background-color-secondary);
+  border: 0;
+}
+
+.btn-secondary:hover {
+  background-color: var(--button-background-color-secondary-hover);
+  border: 0;
+}
+
+
+
+.border-radiusbtn{
+  border-radius: 1rem 1rem 1rem 1rem;
+}

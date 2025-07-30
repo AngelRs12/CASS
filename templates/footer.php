@@ -1,4 +1,4 @@
-<footer class="bg-dark text-light pt-5 pb-3 mt-auto footer">
+<footer class="text-light pt-5 pb-3 footer cass-footer mt-auto">
   <div class="container">
     <div class="row">
 
@@ -27,11 +27,6 @@
         <p><i class="bi bi-envelope-fill"></i> soporte@CASS.edu.mx</p>
         <p><i class="bi bi-telephone-fill"></i> (656) 688 2500</p>
 
-
-
-
-
-
         <!-- Redes Sociales -->
         <div class="mt-3">
           <a href="https://facebook.com" class="text-light me-3"><i class="bi bi-facebook fs-4"></i></a>
@@ -40,7 +35,6 @@
         </div>
       </div>
     </div>
-
 
   </div>
 </footer>

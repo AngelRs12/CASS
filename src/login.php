@@ -1,9 +1,8 @@
-<?php include('../templates/header.php'); ?>
+<?php include($_SERVER['DOCUMENT_ROOT'] . '/cass/templates/header.php'); ?>
 
 <!doctype html>
 
 <html lang="en">
-<link rel="stylesheet" href="/cass/styles/global.css">
 
 <head>
     <meta charset="UTF-8" />
@@ -11,7 +10,6 @@
     <title>Ingresar | CASS</title>
     <link rel="stylesheet" href="/cass/styles/bootstrap.min.css">
     <link rel="stylesheet" href="/cass/styles/global.css">
-    <link rel="stylesheet" href="/cass/styles/variables.css">
 </head>
 
 <body>
@@ -24,15 +22,15 @@
                         <form action="" method="post">
                             <div class="card border-radius-card my-5">
                                 <div class="card-body">
-                                    <h5 class="card-title">Iniciar Sesión</h5>
+                                    <h2>Iniciar Sesión</h2>
                                     <div class="mb-3">
-                                        <label for="" class="form-label">Correo</label>
+                                        <label for="" class="form-label">Correo electrónico</label>
                                         <input
                                             type="text"
                                             class="form-control"
                                             name="Correo"
                                             id="Correo"
-                                            placeholder="Correo Electronico"
+                                            placeholder="Correo electrónico"
                                             value="<?php echo isset($_POST['usuario']) ? htmlspecialchars($_POST['usuario']) : ''; ?>" />
                                     </div>
                                     <div class="mb-3">

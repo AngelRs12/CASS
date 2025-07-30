@@ -54,17 +54,12 @@ if (session_status() === PHP_SESSION_NONE) session_start();
           </li>
 
           <!-- FAQ -->
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="faqDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Soporte y FAQ
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="faqDropdown">
-              <li><a class="dropdown-item" href="cuentas.php">Cuentas institucionales</a></li>
-              <li><a class="dropdown-item" href="wifi.php">Conexión a WiFi</a></li>
-              <li><a class="dropdown-item" href="correo.php">Correo institucional</a></li>
-              <li><a class="dropdown-item" href="faq.php">Otros procesos comunes</a></li>
-            </ul>
+          <li class="nav-item ">
+            <a class="nav-link" href="/cass/src/faq.php">Soporte y FAQs</a>
+            
           </li>
+
+          
 
           <!-- FORMULARIOS (PROTEGIDO) -->
           <?php if (isset($_SESSION["usuario"])): ?>

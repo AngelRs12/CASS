@@ -19,7 +19,7 @@
             <div class="container mt-5">
                 
                 <div class="hero">
-                    <h1 class="display-5">Bienvenido a CASS</h1>
+                    <h1 class="fs-1">Bienvenido a CASS</h1>
                     <p class="lead">Centro de Atención, Soporte y Servicios del Campus</p>
                     <p>Tu espacio integral para resolver trámites, consultar información institucional y acceder a servicios digitales.</p>
                 </div>

@@ -63,7 +63,7 @@ h4 {
 
 h1 {
   color: var(--h1-color);
-  font-weight: bold;
+
   font-size: x-large;
   text-align: center;
   padding: 8px;
@@ -71,7 +71,8 @@ h1 {
 
 h2 {
   color: var(--h2-color);
-  font-size: x-large;
+  font-weight: bold;
+  font-size: xx-large;
   text-align: center;
   padding: 8px;
 }
@@ -89,7 +90,6 @@ html, body {
 }
 
 body {
-  font-family: "Mandali", sans-serif;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -219,7 +219,7 @@ td{
 
 
 
-
+/*
 button {
   background-color: var(--button-background-color);
   color: var(--button-text-color);
@@ -228,7 +228,7 @@ button {
 }
 button:hover {
   background-color: var(--button-background-color-hover);
-}
+}*/
 
 .btn-primary {
   background-color: var(--button-background-color-primary);
@@ -254,4 +254,30 @@ button:hover {
 
 .border-radiusbtn{
   border-radius: 1rem 1rem 1rem 1rem;
+}
+
+.list-group{
+  align-items: center;
+  justify-content: center;
+
+--bs-list-group-border-color: rgb(153, 3, 3);
+--bs-link-color-rgb:153, 3, 3;
+--bs-link-hover-color-rgb:233, 5, 5;
+
+}
+
+
+
+
+.accordion {
+  --bs-accordion-btn-bg: rgb(250, 246, 246);
+  --bs-accordion-active-bg: rgb(153, 3, 3);
+  --bs-accordion-active-color: rgb(255, 255, 255);
+  --bs-accordion-btn-focus-box-shadow:rgb(141, 11, 11) ;
+  --bs-accordion-bg: rgb(255, 255, 255);
+	--bs-accordion-color: rgb(0, 0, 0);
+}
+
+.accordion-button:not(.collapsed){
+  box-shadow: none;
 }

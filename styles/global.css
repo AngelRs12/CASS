@@ -9,11 +9,6 @@ body {
   min-height: 100vh;
 }
 
-
-
-/*footer*/
-
-
 .footer-container {
     display: flex;
     justify-content: center; /* Centra horizontalmente */
@@ -23,3 +18,17 @@ body {
     width: 50%;
 }
 
+.border-radiusbtn{
+  border-radius: 1rem 1rem 1rem 1rem;
+}
+
+.border-radius-card{
+  border-radius: 1rem 1rem 1rem 1rem;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* sombra suave abajo */
+  background-color: #fff; /* opcional, para contraste */
+  padding: 1rem; 
+}

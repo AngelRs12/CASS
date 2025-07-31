@@ -286,3 +286,15 @@ button:hover {
   background-color: #00000000;
   border: none;
 }
+
+.nav-tabs .nav-item .nav-link {
+  background-color: #68120c;
+  color: #e2c5c5;
+}
+
+.nav-tabs .nav-item .nav-link.active {
+  color: #ffffff;
+  border-bottom: 4px solid rgb(148, 13, 13);
+  background-color: rgb(148, 13, 13);
+}
+

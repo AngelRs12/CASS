@@ -25,13 +25,13 @@
 <body>
     <div class="page-wrapper">
         <div class="content-wrapper">
-            <div class="container mt-5 mb-4">
+            <div class="container container-lar mb-4">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="card card-transparent mb-5 px-4">
+                        <div class="card border-radius-card my-5 px-4">
                             <div class="card-body">
 
-                                <h2 class="mb-4">Sobre CASS</h2>
+                                <h2 class="my-3">Sobre CASS</h2>
 
                                 <ul class="nav nav-tabs" id="tabsSobreCass" role="tablist">
                                     <li class="nav-item" role="presentation">

@@ -1,0 +1,25 @@
+.archivo-card div {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.archivo-card:hover div {
+    transform: scale(1.075);
+}
+
+.archivo-card small {
+    display: block;
+    word-break: break-word;
+    color: #212529;
+}
+
+.archivo-card:hover small {
+    color: #0d6efd; /* azul Bootstrap */
+}
+
+.archivo-card i {
+    transition: transform 0.2s ease;
+}
+
+.archivo-card:hover i {
+    transform: scale(1.2);
+}

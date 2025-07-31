@@ -76,15 +76,8 @@ if (session_status() === PHP_SESSION_NONE) session_start();
           <?php endif; ?>
 
           <!-- DOCUMENTOS -->
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="documentosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Documentos Oficiales
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="documentosDropdown">
-              <li><a class="dropdown-item" href="guias.php">Guías de procesos</a></li>
-              <li><a class="dropdown-item" href="formatos.php">Formatos descargables</a></li>
-              <li><a class="dropdown-item" href="manuales.php">Manuales</a></li>
-            </ul>
+           <li class="nav-item ">
+            <a class="nav-link" href="/cass/src/documentos.php">Documentos Oficiales</a>
           </li>
 
           <!-- SOBRE CASS -->

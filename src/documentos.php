@@ -56,9 +56,9 @@ $documentos = [
                             <div class="card-body">
                                 <h2 class="my-3">Documentos Oficiales</h2>
                                 <ul class="list-group list-group-horizontal-sm mb-4 flex-wrap">
-                                    <li class="list-group-item"><a href="#guias">Guías de procesos</a></li>
-                                    <li class="list-group-item"><a href="#formatos">Formatos descargables</a></li>
-                                    <li class="list-group-item"><a href="#Manualess">Manuales</a></li>
+                                    <li class="list-group-item border-top-0 border-bottom-0"><a href="#guias">Guías de procesos</a></li>
+                                    <li class="list-group-item border-top-0 border-bottom-0"><a href="#formatos">Formatos descargables</a></li>
+                                    <li class="list-group-item border-top-0 border-bottom-0"><a href="#Manualess">Manuales</a></li>
                                 </ul>
                                 <hr>
                                 <section id="cuentas" class="mb-5 mt-4">

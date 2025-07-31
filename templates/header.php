@@ -81,14 +81,8 @@ if (session_status() === PHP_SESSION_NONE) session_start();
           </li>
 
           <!-- SOBRE CASS -->
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="cassDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Sobre CASS
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="cassDropdown">
-              <li><a class="dropdown-item" href="objetivo.php">Objetivo del proyecto</a></li>
-              <li><a class="dropdown-item" href="aviso_privacidad.php">Aviso de privacidad</a></li>
-            </ul>
+          <li class="nav-item ">
+            <a class="nav-link" href="/cass/src/about_cass.php">Sobre CASS</a>
           </li>
         </ul>
 

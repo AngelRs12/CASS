@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>FAQ | CASS</title>
+    <title>FAQs | CASS</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="/cass/styles/bootstrap.min.css">
@@ -23,9 +23,9 @@
 
                                 <!-- Índice de temas -->
                                 <ul class="list-group list-group-horizontal-sm mb-4 flex-wrap">
-                                    <li class="list-group-item"><a href="#cuentas">Cuentas institucionales</a></li>
-                                    <li class="list-group-item"><a href="#wifi">Conexión a WiFi</a></li>
-                                    <li class="list-group-item"><a href="#otros">Otros procesos comunes</a></li>
+                                    <li class="list-group-item border-top-0 border-bottom-0 "><a href="#cuentas">Cuentas institucionales</a></li>
+                                    <li class="list-group-item border-top-0 border-bottom-0"><a href="#wifi">Conexión a WiFi</a></li>
+                                    <li class="list-group-item border-top-0 border-bottom-0"><a href="#otros">Otros procesos comunes</a></li>
                                 </ul>
                                 <hr>
                                 <section id="cuentas" class="mb-5 mt-4">

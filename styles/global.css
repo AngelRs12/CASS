@@ -260,7 +260,7 @@ button:hover {
   align-items: center;
   justify-content: center;
 
---bs-list-group-border-color: rgb(153, 3, 3);
+--bs-list-group-border-color: rgba(153, 3, 3, 0.486);
 --bs-link-color-rgb:153, 3, 3;
 --bs-link-hover-color-rgb:233, 5, 5;
 
@@ -280,4 +280,9 @@ button:hover {
 
 .accordion-button:not(.collapsed){
   box-shadow: none;
+}
+
+.card-transparent {
+  background-color: #00000000;
+  border: none;
 }

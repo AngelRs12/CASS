@@ -1,0 +1,47 @@
+.tarjeta-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  border-radius: 0.25rem; /* opcional, para que se vea igual que bootstrap */
+  /* cualquier otro estilo base que quieras */
+}
+
+.tarjeta-hover:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para tarjetas con borde amarillo (noticias) */
+.tarjeta-hover.border-warning:hover {
+  border-color: #ffc107 !important;
+  box-shadow: 0 0 15px 3px rgba(255, 193, 7, 0.7);
+}
+
+.tarjeta-hover.border-warning:hover .btn-warning {
+  background-color: #e0a800;
+  border-color: #e0a800;
+}
+
+/* Estilos para tarjetas con borde verde (eventos) */
+.tarjeta-hover.border-success:hover {
+  border-color: #198754 !important;
+  box-shadow: 0 0 15px 3px rgba(25, 135, 84, 0.7);
+}
+
+.tarjeta-hover.border-success:hover .btn-success {
+  background-color: #157347;
+  border-color: #157347;
+}
+
+/* Color del título al hacer hover */
+.tarjeta-hover:hover .card-title {
+  color: #0056b3;
+  transition: color 0.3s ease;
+}
+
+.tarjeta-hover .card-img-top {
+
+  object-fit: cover;
+  object-position: center;
+  border-top-left-radius: 0.375rem;
+  border-top-right-radius: 0.375rem;
+}

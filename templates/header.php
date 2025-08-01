@@ -30,14 +30,8 @@ if (session_status() === PHP_SESSION_NONE) session_start();
           </li>
 
           <!-- NOTICIAS Y EVENTOS -->
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="noticiasDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Noticias y Eventos
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="noticiasDropdown">
-              <li><a class="dropdown-item" href="noticias.php">Noticias del campus</a></li>
-              <li><a class="dropdown-item" href="eventos.php">Próximos eventos</a></li>
-            </ul>
+        <li class="nav-item ">
+            <a class="nav-link" href="/cass/src/noticias.php">Noticias y Eventos</a>
           </li>
 
           <!-- DEPARTAMENTOS -->

@@ -1,57 +1,39 @@
 <?php
 session_start();
-require_once "../configs/connectDB";
-header("Content-Type: application/json");
+include($_SERVER['DOCUMENT_ROOT'] . '/cass/configs/connectDB.php');
+header('Content-Type: application/json');
 
-try {
-    if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-        throw new Exception("Método no permitido.");
-    }
+$input = json_decode(file_get_contents('php://input'), true);
+$correo = trim($input['correo']);
+$password = $input['password'];
 
-    $usuario = trim($_POST["usuario"] ?? '');
-    $contraseña = trim($_POST["contraseña"] ?? '');
-
-    if (empty($usuario) || empty($contraseña)) {
-        throw new Exception("Todos los campos son obligatorios.");
-    }
-
-    if (!preg_match('/^[a-zA-Z0-9_]{4,50}$/', $usuario)) {
-        throw new Exception("Formato de usuario inválido.");
-    }
-
-    $query = "SELECT idUsuario, usuario, contra, idRol FROM usuarios WHERE usuario = :usuario AND activo = TRUE";
-    $stmt = $conn->prepare($query);
-    $stmt->bindParam(":usuario", $usuario, PDO::PARAM_STR);
-    $stmt->execute();
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    if (!$user || !password_verify($contraseña, $user["contra"])) {
-        throw new Exception("Usuario o contraseña incorrectos.");
-    }
-
-    $_SESSION["usuario"] = $usuario;
-    $_SESSION["user_id"] = $user["idusuario"];
-    $_SESSION["rol"] = $user["idrol"];
-
-    if ($user["idrol"] == 3) {
-        $stmtDoctor = $conn->prepare("SELECT iddoctor, nombre FROM doctores WHERE idUsuario = :idUsuario");
-        $stmtDoctor->bindParam(":idUsuario", $user["idusuario"], PDO::PARAM_INT);
-        $stmtDoctor->execute();
-        $doctor = $stmtDoctor->fetch(PDO::FETCH_ASSOC);
-        $_SESSION["nombre_usuario"] = $doctor ? $doctor["nombre"] : $usuario;
-        $_SESSION["id_doctor"] = $doctor["iddoctor"] ?? null;
-    } else {
-        $_SESSION["nombre_usuario"] = $usuario;
-    }
-
-    echo json_encode(["success" => true]);
-} catch (Exception $e) {
-    echo json_encode([
-        "success" => false,
-        "message" => htmlspecialchars($e->getMessage(), ENT_QUOTES, 'UTF-8')
-    ]);
+if (empty($correo) || empty($password)) {
+    echo json_encode(['success' => false, 'message' => 'Todos los campos son obligatorios']);
+    exit;
 }
 
+try {
+    $stmt = $conn->prepare("SELECT idUsuario, mail, contra, tipo FROM usuarios WHERE mail = :mail");
+    $stmt->bindParam(':mail', $correo, PDO::PARAM_STR);
+    $stmt->execute();
+
+    if ($stmt->rowCount() === 0) {
+        echo json_encode(['success' => false, 'message' => 'Correo o contraseña incorrectos']);
+        exit;
+    }
+
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if (password_verify($password, $user['contra'])) {
+        $_SESSION['idUsuario'] = $user['idusuario'];
+        $_SESSION['correo'] = $user['mail'];
+        $_SESSION['tipo'] = $user['tipo'];
+
+        echo json_encode(['success' => true, 'message' => 'Inicio de sesión exitoso']);
+    } else {
+        echo json_encode(['success' => false, 'message' => 'Correo o contraseña incorrectos']);
+    }
+} catch (PDOException $e) {
+    echo json_encode(['success' => false, 'message' => 'Error en el servidor']);
+}
 ?>
-
-

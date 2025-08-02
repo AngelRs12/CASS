@@ -24,7 +24,7 @@ if (isset($_GET['mensaje'])) {
                 <div class="row">
                     <!--<div class="row"  style="max-width:800px;margin-left: auto; margin-right: auto;">-->
                     <div class="col-md-12">
-                        <form action="" method="post">
+                        <form>
                             <div class="card border-radius-card my-5">
                                 <div class="card-body">
                                     <h2>Registrate</h2>
@@ -61,7 +61,7 @@ if (isset($_GET['mensaje'])) {
                                             required />
                                     </div>
 
-                                    <button class="btn btn-primary form-control border-radiusbtn" type="submit" name="submit">Registrar</button>
+                                    <button class="btn btn-danger form-control border-radiusbtn" type="submit" name="submit">Registrar</button>
                                     <button class="btn btn-secondary form-control border-radiusbtn mt-3" type="button" onclick="history.back()">Volver</button>
                                 </div>
                             </div>
@@ -73,9 +73,26 @@ if (isset($_GET['mensaje'])) {
         </div>
         <?php include($_SERVER['DOCUMENT_ROOT'] . '/cass/templates/footer.php'); ?>
     </div>
+
+
+    <div class="modal fade" id="mensajeModal" tabindex="-1" aria-labelledby="mensajeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="mensajeModalLabel">Mensaje</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body" id="mensajeModalBody">
+      </div>
+    </div>
+  </div>
+</div>
+
+
 </body>
 <!--el popper pa q es?-->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="/cass/scripts/bootstrap.bundle.min.js"></script>
+<script src="/cass/scripts/registro.js"></script>
 
 </html>

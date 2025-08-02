@@ -44,7 +44,7 @@
                                             placeholder="Ingresa tu contraseña" />
                                     </div>
                                     <small id="helpId" class="form-text text-muted">¿No tienes una cuenta? <a href="registrate.php">Registrate</a></small><br><br>
-                                    <button class="btn btn-primary form-control border-radiusbtn">Continuar</button>
+                                    <button class="btn btn-danger form-control border-radiusbtn">Continuar</button>
                                 </div>
                             </div>
                         </form>
@@ -54,7 +54,19 @@
         </div>
         <?php include($_SERVER['DOCUMENT_ROOT'] . '/cass/templates/footer.php'); ?>
     </div>
-    
+    <div class="modal fade" id="feedbackModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Mensaje dinámico -->
+            </div>
+        </div>
+    </div>
+</div>
 
 
     <script
@@ -62,5 +74,6 @@
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script>
     <script src="/cass/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/cass/scripts/login.js"></script>
 
 </html>

@@ -1,31 +1,41 @@
-document.getElementById("loginForm").addEventListener("submit", function(event) {
-    event.preventDefault();
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.querySelector("form");
 
-    let usuario = document.getElementById("usuario").value.trim();
-    let contraseña = document.getElementById("contraseña").value.trim();
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
 
-    const regexUsuario = /^[a-zA-Z0-9_]{4,50}$/;
+        const correo = document.getElementById("Correo").value.trim();
+        const password = document.getElementById("password").value.trim();
 
-    if (!usuario || !contraseña || !regexUsuario.test(usuario)) {
-        document.getElementById("mensaje").textContent = "Usuario o contraseña inválidos.";
-        return;
+        fetch("/cass/auth/login.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ correo, password })
+        })
+        .then(response => response.json())
+        .then(data => {
+            mostrarModal(data.success, data.message);
+
+            if (data.success) {
+                setTimeout(() => {
+                    window.location.href = "/cass/src/noticias.php"; // Cambia al destino que quieras
+                }, 1500);
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            mostrarModal(false, "Error en la conexión");
+        });
+    });
+
+    function mostrarModal(success, message) {
+        const modalLabel = document.getElementById("modalLabel");
+        const modalBody = document.getElementById("modalBody");
+
+        modalLabel.innerText = success ? "Éxito" : "Error";
+        modalBody.innerText = message;
+
+        const modal = new bootstrap.Modal(document.getElementById('feedbackModal'));
+        modal.show();
     }
-
-    let formData = new FormData();
-    formData.append("usuario", usuario);
-    formData.append("contraseña", contraseña);
-
-    fetch("../auth/login.php", {
-        method: "POST",
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            window.location.href = "dashboard.php";
-        } else {
-            document.getElementById("mensaje").textContent = data.message;
-        }
-    })
-    .catch(error => console.error("Error:", error));
 });

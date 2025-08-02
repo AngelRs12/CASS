@@ -1,0 +1,30 @@
+{
+  "noticias": [
+    {
+      "titulo": "Nuevo Laboratorio de Innovación",
+      "descripcion": "Se inauguró el nuevo Laboratorio de Innovación Tecnológica, un espacio diseñado para fomentar el desarrollo de proyectos de estudiantes y docentes.",
+      "imagen": "/cass/assets/default.jpg",
+      "archivo": "/cass/assets/Noticias/laboratorio_detalles.pdf"
+    },
+    {
+      "titulo": "Concurso de Programación 2025",
+      "descripcion": "El campus será sede del Concurso Nacional de Programación, donde participarán equipos de todo el país en desafíos de algoritmos y resolución de problemas.",
+      "imagen": "/cass/assets/default.jpg",
+      "archivo": "/cass/assets/Noticias/concurso_detalles.pdf"
+    }
+  ],
+  "eventos": [
+    {
+      "titulo": "Feria de Servicios Estudiantiles",
+      "descripcion": "aaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaa aaaaaaaaaaaa aaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaa aaaaaa aaaaaaaaaaa",
+      "imagen": "/cass/assets/default.jpg",
+      "archivo": "/cass/assets/Eventos/feria_programa.pdf"
+    },
+    {
+      "titulo": "Taller de Ciberseguridad",
+      "descripcion": "El taller abordará buenas prácticas para proteger cuentas institucionales, detección de correos fraudulentos y configuración segura de dispositivos.",
+      "imagen": "/cass/assets/default.jpg",
+      "archivo": "/cass/assets/Eventos/ciberseguridad_detalles.pdf"
+    }
+  ]
+}

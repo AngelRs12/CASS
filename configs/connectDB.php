@@ -1,13 +1,14 @@
 <?php
-$host = "localhost";
-$dbname = "cass";
-$user = "postgres";
-$password = "12345";
+$host = 'localhost';
+$db = 'cass';
+$user = 'postgres';
+$pass = '12345';
+$dsn = "pgsql:host=$host;dbname=$db";
 
 try {
-    $conn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conn = new PDO($dsn, $user, $pass, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
 } catch (PDOException $e) {
-    die("Error de conexión: " . $e->getMessage());
+    echo "Error de conexión: " . $e->getMessage();
+    exit;
 }
 ?>

@@ -65,7 +65,7 @@ $datos = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/cass/assets
     </div>
     <?php include($_SERVER['DOCUMENT_ROOT'] . '/cass/templates/footer.php'); ?>
 </div>
-<!-- Modal Detalle Noticia/Evento -->
+
 <div class="modal fade" id="detalleModal" tabindex="-1" aria-labelledby="detalleModalLabel" aria-hidden="true" data-bs-backdrop="true" data-bs-keyboard="true">
   <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content">
@@ -75,17 +75,13 @@ $datos = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/cass/assets
       </div>
       <div class="modal-body">
         <div class="row align-items-center">
-          <!-- Imagen a la izquierda -->
+
           <div class="col-md-5 text-center">
             <img id="modalImagen" src="" class="img-fluid rounded mb-3 mb-md-0" alt="Imagen detalle" style="max-height: 300px;">
           </div>
 
-          <!-- Texto a la derecha -->
           <div class="col-md-7">
             <p id="modalDescripcion" class="mb-4"></p>
-            <div class="text-center">
-              <a id="modalArchivoLink" href="#" target="_blank" class="btn btn-danger">Ver documento completo</a>
-            </div>
           </div>
         </div>
       </div>

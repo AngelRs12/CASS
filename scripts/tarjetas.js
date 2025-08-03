@@ -20,12 +20,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const titulo = boton.getAttribute("data-titulo");
     const img = boton.getAttribute("data-img");
     const descripcion = boton.getAttribute("data-descripcion");
-    const doc = boton.getAttribute("data-doc");
 
     document.getElementById("detalleModalLabel").innerText = titulo;
     document.getElementById("modalImagen").src = img;
     document.getElementById("modalDescripcion").innerText = descripcion;
-    document.getElementById("modalArchivoLink").href = doc;
 
     modalDetalle.show();
   });
@@ -51,13 +49,14 @@ function cargarTarjetas(tipo, contenedorId, documentos) {
         <img src="${img}" class="card-img-top" alt="${doc.titulo}">
         <div class="card-body">
           <h5 class="card-title">${doc.titulo}</h5>
+          <div class="text-center">
           <button class="btn btn-danger leer-mas-btn" 
                   data-titulo="${doc.titulo}" 
                   data-img="${img}" 
-                  data-descripcion="${doc.descripcion}" 
-                  data-doc="${doc.archivo}">
+                  data-descripcion="${doc.descripcion}" >
             Leer más
           </button>
+          </div>
         </div>
       </div>
     `;

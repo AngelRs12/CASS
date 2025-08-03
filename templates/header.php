@@ -92,7 +92,7 @@ if (session_status() === PHP_SESSION_NONE) session_start();
               </a>
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="usuarioDropdown">
                 <li><a class="dropdown-item" href="ver_formularios.php">Mis Formularios</a></li>
-                <li><a class="dropdown-item" href="estado_solicitudes.php">Estado de solicitudes</a></li>
+                <li><a class="dropdown-item" href="/cass/src/edo_solicitudes.php">Estado de solicitudes</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="/cass/auth/logout.php">Cerrar Sesión</a></li>
               </ul>

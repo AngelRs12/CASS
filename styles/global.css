@@ -42,8 +42,8 @@
 
   --label-color: rgb(100, 5, 5);
 
-
 }
+
 @import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 
 
@@ -338,3 +338,18 @@ button:hover {
     font-size: 1.5rem;
     font-weight: bold;
 }
+
+table {
+  width: 100%;
+  table-layout: fixed;
+}
+thead {
+  background-color: var(--table-header-color) ; 
+}
+th {
+  color: var(--table-header-text-color);
+}
+td{
+  word-break: BREAK-WORD;
+}
+

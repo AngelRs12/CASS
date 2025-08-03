@@ -3,7 +3,7 @@ session_start();
 header('Content-Type: application/json');
 include($_SERVER['DOCUMENT_ROOT'] . '/cass/configs/connectDB.php');
 
-$correoUsuario = isset($_SESSION['usuario']) ? $_SESSION['usuario'] : '';
+$correoUsuario = isset($_SESSION['correo']) ? $_SESSION['correo'] : '';
 
 if (!$correoUsuario) {
     echo json_encode([]);

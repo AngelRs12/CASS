@@ -23,18 +23,16 @@ if (session_status() === PHP_SESSION_NONE) session_start();
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
 
-          <!-- INICIO -->
           <li class="nav-item ">
             <a class="nav-link" href="/cass/index.php">Inicio</a>
             
           </li>
 
-          <!-- NOTICIAS Y EVENTOS -->
         <li class="nav-item ">
             <a class="nav-link" href="/cass/src/noticias.php">Noticias y Eventos</a>
           </li>
 
-          <!-- DEPARTAMENTOS -->
+
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="departamentosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Departamentos

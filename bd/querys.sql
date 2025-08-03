@@ -17,8 +17,9 @@ select * from usuarios
 
 
 --for dump 
---C:\Program Files\PostgreSQL\<ver>\bin
---pg_dump -U postgres -d cass > C:\Users\sonia\Downloads\cass_backup.sql
+--C:\Program Files\PostgreSQL\17\bin
+--pg_dump -U postgres -d cass > C:\xampp\htdocs\CASS\bd\cass_backup.sql
+-- 
 
 
 --uno d estos debe d funcionar
@@ -26,4 +27,21 @@ select * from usuarios
 
 --psql -U user db_name < /directory/archive.sql
 
+
+CREATE TABLE solicitudes (
+    folio SERIAL PRIMARY KEY,
+    usuarioMail VARCHAR(254),
+    tipo VARCHAR(100),
+    fechaSolicitud TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    estado VARCHAR(50) DEFAULT 'Pendiente',
+    comentarios TEXT
+);
+
+--drop table solicitudes
+
+--insert into solicitudes (usuarioMail, tipo, comentarios ) 
+values ('a@cd.te.mx','Soporte','Comentario Comentario Comentario Comentario Comentario Comentario Comentario Comentario')
+
+
+select * from solicitudes
 

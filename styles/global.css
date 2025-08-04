@@ -30,9 +30,9 @@
   --button-background-color-secondary-hover: rgb(27, 25, 25);
 
 
-  --table-header-color: #001233;
-  --table-header-text-color: rgb(255, 255, 255);
-  --table-border-color: #ffffff;
+  --table-header-color: rgb(141, 11, 11);
+  --table-header-text-color: #fcfefe;
+  --table-border-color: #00ff0d;
 
   --h1-color:  rgb(255, 255, 255);
   --h2-color:  rgb(66, 2, 2);
@@ -202,14 +202,12 @@ table {
   width: 100%;
   table-layout: fixed;
 }
-thead {
-  background-color: var(--table-header-color);
+thead th {
+  background-color: var(--table-header-color) !important;
+  color: var(--table-header-text-color) !important;
 }
-th {
-  color: var(--table-header-text-color);
-}
-td{
-  word-break: BREAK-WORD;
+td {
+  word-break: break-word ;
 }
 
 
@@ -231,7 +229,7 @@ button:hover {
 }*/
 
 .btn-primary {
-  background-color: var(--button-background-color-primary);
+  background-color: var(--button-background-color-primary) ;
   border: 0;
 }
 
@@ -338,18 +336,3 @@ button:hover {
     font-size: 1.5rem;
     font-weight: bold;
 }
-
-table {
-  width: 100%;
-  table-layout: fixed;
-}
-thead {
-  background-color: var(--table-header-color) ; 
-}
-th {
-  color: var(--table-header-text-color);
-}
-td{
-  word-break: BREAK-WORD;
-}
-

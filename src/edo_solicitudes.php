@@ -4,13 +4,13 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Mis Solicitudes | CASS</title>
-    <link rel="stylesheet" href="/cass/styles/global.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>solicitudes</title>
     <link rel="stylesheet" href="/cass/styles/bootstrap.min.css">
+    <link rel="stylesheet" href="/cass/styles/global.css">
 
 </head>
-
 <body>
     <div class="page-wrapper">
         <div class="content-wrapper">
@@ -47,8 +47,8 @@
         <?php include($_SERVER['DOCUMENT_ROOT'] . '/cass/templates/footer.php'); ?>
     </div>
 
-    <script src="/cass/scripts/edo_solicitudes.js"></script>
     <script src="/cass/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/cass/scripts/edo_solicitudes.js"></script>
 </body>
 
 </html>

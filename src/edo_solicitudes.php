@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>solicitudes</title>
+    <title>Solicitudes</title>
     <link rel="stylesheet" href="/cass/styles/bootstrap.min.css">
     <link rel="stylesheet" href="/cass/styles/global.css">
 

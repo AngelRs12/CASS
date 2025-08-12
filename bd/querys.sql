@@ -30,7 +30,7 @@ select * from usuarios
 
 CREATE TABLE solicitudes (
     folio SERIAL PRIMARY KEY,
-    usuarioMail VARCHAR(254),
+    idUsuario INT NOT NULL,
     tipo VARCHAR(100),
     fechaSolicitud TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     estado VARCHAR(50) DEFAULT 'Pendiente',

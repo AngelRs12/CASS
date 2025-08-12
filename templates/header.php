@@ -60,7 +60,7 @@ if (session_status() === PHP_SESSION_NONE) session_start();
                 Formularios en línea 
               </a>
               <ul class="dropdown-menu" aria-labelledby="formulariosDropdown">
-                <li><a class="dropdown-item" href="solicitud_soporte.php">Solicitud de soporte técnico</a></li>
+                <li><a class="dropdown-item" href="solicitud_form.php">Solicitud de soporte técnico</a></li>
                 <li><a class="dropdown-item" href="reporte_falla.php">Reporte de fallas</a></li>
                 <li><a class="dropdown-item" href="otros_formularios.php">Otros trámites</a></li>
               </ul>

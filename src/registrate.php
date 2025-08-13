@@ -94,5 +94,9 @@ if (isset($_GET['mensaje'])) {
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="/cass/scripts/bootstrap.bundle.min.js"></script>
 <script src="/cass/scripts/registro.js"></script>
+<<<<<<< HEAD
+
+=======
+>>>>>>> 1f46bbd104b3cef27572390c545cb7484e3378a9
 
 </html>

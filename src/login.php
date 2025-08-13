@@ -19,7 +19,7 @@
                 <div class="row">
                     <!--<div class="row"  style="max-width:800px;margin-left: auto; margin-right: auto;">-->
                     <div class="col-md-12">
-                        <form action="" method="post">
+                        <form id="loginForm" action="" method="post">
                             <div class="card border-radius-card my-5">
                                 <div class="card-body">
                                     <h2>Iniciar Sesión</h2>
@@ -43,6 +43,7 @@
                                             aria-describedby="helpId"
                                             placeholder="Ingresa tu contraseña" />
                                     </div>
+                                     <div id="mensaje" class="text-danger mb-2"></div>
                                     <small id="helpId" class="form-text text-muted">¿No tienes una cuenta? <a href="registrate.php">Registrate</a></small><br><br>
                                     <button class="btn btn-danger form-control border-radiusbtn">Continuar</button>
                                 </div>
@@ -75,6 +76,9 @@
         crossorigin="anonymous"></script>
     <script src="/cass/scripts/bootstrap.bundle.min.js"></script>
     <script src="/cass/scripts/login.js"></script>
+<<<<<<< HEAD
+=======
 
+>>>>>>> 1f46bbd104b3cef27572390c545cb7484e3378a9
 
 </html>

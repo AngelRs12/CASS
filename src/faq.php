@@ -21,7 +21,6 @@
                             <div class="card-body">
                                 <h2 class="my-3">Preguntas Frecuentes (FAQs)</h2>
 
-                                <!-- Índice de temas -->
                                 <ul class="list-group list-group-horizontal-sm mb-4 flex-wrap">
                                     <li class="list-group-item border-top-0 border-bottom-0 "><a href="#cuentas">Cuentas institucionales</a></li>
                                     <li class="list-group-item border-top-0 border-bottom-0"><a href="#wifi">Conexión a WiFi</a></li>
@@ -165,7 +164,6 @@
         </div>
         <?php include($_SERVER['DOCUMENT_ROOT'] . '/cass/templates/footer.php'); ?>
     </div>
-    <!-- Scripts -->
     <script src="/cass/scripts/bootstrap.bundle.min.js"></script>
 </body>
 

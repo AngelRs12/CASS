@@ -45,7 +45,7 @@
                                     </div>
                                      <div id="mensaje" class="text-danger mb-2"></div>
                                     <small id="helpId" class="form-text text-muted">¿No tienes una cuenta? <a href="registrate.php">Registrate</a></small><br><br>
-                                    <button class="btn btn-primary form-control border-radiusbtn">Continuar</button>
+                                    <button class="btn btn-danger form-control border-radiusbtn">Continuar</button>
                                 </div>
                             </div>
                         </form>
@@ -55,8 +55,20 @@
         </div>
         <?php include($_SERVER['DOCUMENT_ROOT'] . '/cass/templates/footer.php'); ?>
     </div>
-    
+    <div class="modal fade" id="feedbackModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body" id="modalBody">
 
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
 
     <script
         src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
@@ -64,5 +76,9 @@
         crossorigin="anonymous"></script>
     <script src="/cass/scripts/bootstrap.bundle.min.js"></script>
     <script src="/cass/scripts/login.js"></script>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1f46bbd104b3cef27572390c545cb7484e3378a9
 
 </html>

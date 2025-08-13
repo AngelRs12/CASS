@@ -34,7 +34,7 @@
 
 /* Color del título al hacer hover */
 .tarjeta-hover:hover .card-title {
-  color: #0056b3;
+  color: #8f0505;
   transition: color 0.3s ease;
 }
 

@@ -23,18 +23,16 @@ if (session_status() === PHP_SESSION_NONE) session_start();
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
 
-          <!-- INICIO -->
           <li class="nav-item ">
             <a class="nav-link" href="/cass/index.php">Inicio</a>
             
           </li>
 
-          <!-- NOTICIAS Y EVENTOS -->
         <li class="nav-item ">
             <a class="nav-link" href="/cass/src/noticias.php">Noticias y Eventos</a>
           </li>
 
-          <!-- DEPARTAMENTOS -->
+
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="departamentosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Departamentos
@@ -56,13 +54,13 @@ if (session_status() === PHP_SESSION_NONE) session_start();
           
 
           <!-- FORMULARIOS (PROTEGIDO) -->
-          <?php if (isset($_SESSION["usuario"])): ?>
+          <?php if (isset($_SESSION["correo"])): ?>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="formulariosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Formularios en línea 
               </a>
               <ul class="dropdown-menu" aria-labelledby="formulariosDropdown">
-                <li><a class="dropdown-item" href="solicitud_soporte.php">Solicitud de soporte técnico</a></li>
+                <li><a class="dropdown-item" href="solicitud_form.php">Solicitud de soporte técnico</a></li>
                 <li><a class="dropdown-item" href="reporte_falla.php">Reporte de fallas</a></li>
                 <li><a class="dropdown-item" href="otros_formularios.php">Otros trámites</a></li>
               </ul>
@@ -82,19 +80,19 @@ if (session_status() === PHP_SESSION_NONE) session_start();
 
         <!-- SESIÓN -->
         <ul class="navbar-nav ms-auto">
-          <?php if (!isset($_SESSION["usuario"])): ?>
+          <?php if (!isset($_SESSION["correo"])): ?>
             <li class="nav-item"><a class="nav-link" href="/cass/src/login.php">Iniciar Sesión</a></li>
             <li class="nav-item"><a class="nav-link" href="/cass/src/registrate.php">Registrarse</a></li>
           <?php else: ?>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="usuarioDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Hola, <?php echo htmlspecialchars($_SESSION["nombre_usuario"] ?? $_SESSION["usuario"]); ?>
+                Hola, <?php echo htmlspecialchars($_SESSION["correo"] ?? $_SESSION["usuario"]); ?>
               </a>
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="usuarioDropdown">
                 <li><a class="dropdown-item" href="ver_formularios.php">Mis Formularios</a></li>
-                <li><a class="dropdown-item" href="estado_solicitudes.php">Estado de solicitudes</a></li>
+                <li><a class="dropdown-item" href="/cass/src/edo_solicitudes.php">Estado de solicitudes</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="../auth/logout.php">Cerrar Sesión</a></li>
+                <li><a class="dropdown-item" href="/cass/auth/logout.php">Cerrar Sesión</a></li>
               </ul>
             </li>
           <?php endif; ?>

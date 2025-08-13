@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once "../configs/connectDB";
+require_once "../configs/connectDB.php"; // asegúrate del nombre correcto
 header("Content-Type: application/json");
 
 try {
@@ -8,41 +8,37 @@ try {
         throw new Exception("Método no permitido.");
     }
 
-    $usuario = trim($_POST["usuario"] ?? '');
-    $contraseña = trim($_POST["contraseña"] ?? '');
+    $correo = trim($_POST["Correo"] ?? '');
+    $password = trim($_POST["password"] ?? '');
 
-    if (empty($usuario) || empty($contraseña)) {
+    if (empty($correo) || empty($password)) {
         throw new Exception("Todos los campos son obligatorios.");
     }
 
-    if (!preg_match('/^[a-zA-Z0-9_]{4,50}$/', $usuario)) {
-        throw new Exception("Formato de usuario inválido.");
+    // Validar formato de correo electrónico
+    if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
+        throw new Exception("Formato de correo inválido.");
     }
 
-    $query = "SELECT idUsuario, usuario, contra, idRol FROM usuarios WHERE usuario = :usuario AND activo = TRUE";
+    // Buscar usuario por correo
+    $query = "SELECT idUsuario, mail, contra, tipo 
+              FROM usuarios 
+              WHERE mail = :mail";
     $stmt = $conn->prepare($query);
-    $stmt->bindParam(":usuario", $usuario, PDO::PARAM_STR);
+    $stmt->bindParam(":mail", $correo, PDO::PARAM_STR);
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if (!$user || !password_verify($contraseña, $user["contra"])) {
-        throw new Exception("Usuario o contraseña incorrectos.");
+    // Verificar credenciales
+    if (!$user || !password_verify($password, $user["contra"])) {
+        throw new Exception("Correo o contraseña incorrectos.");
     }
 
-    $_SESSION["usuario"] = $usuario;
-    $_SESSION["user_id"] = $user["idusuario"];
-    $_SESSION["rol"] = $user["idrol"];
-
-    if ($user["idrol"] == 3) {
-        $stmtDoctor = $conn->prepare("SELECT iddoctor, nombre FROM doctores WHERE idUsuario = :idUsuario");
-        $stmtDoctor->bindParam(":idUsuario", $user["idusuario"], PDO::PARAM_INT);
-        $stmtDoctor->execute();
-        $doctor = $stmtDoctor->fetch(PDO::FETCH_ASSOC);
-        $_SESSION["nombre_usuario"] = $doctor ? $doctor["nombre"] : $usuario;
-        $_SESSION["id_doctor"] = $doctor["iddoctor"] ?? null;
-    } else {
-        $_SESSION["nombre_usuario"] = $usuario;
-    }
+    // Guardar datos en sesión
+    $_SESSION["usuario"] = $user["mail"];
+    $_SESSION["user_id"] = $user["idUsuario"];
+    $_SESSION["tipo"] = $user["tipo"];
+    $_SESSION["nombre_usuario"] = $user["mail"]; // O un campo de nombre si lo tienes
 
     echo json_encode(["success" => true]);
 } catch (Exception $e) {
@@ -51,7 +47,3 @@ try {
         "message" => htmlspecialchars($e->getMessage(), ENT_QUOTES, 'UTF-8')
     ]);
 }
-
-?>
-
-

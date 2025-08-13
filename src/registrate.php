@@ -77,5 +77,7 @@ if (isset($_GET['mensaje'])) {
 <!--el popper pa q es?-->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="/cass/scripts/bootstrap.bundle.min.js"></script>
+<script src="/cass/scripts/registro.js"></script>
+
 
 </html>

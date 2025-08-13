@@ -1,0 +1,23 @@
+[
+    {
+        "nombre": "Departamento de Servicios Escolares",
+        "descripcion": "Trámites de reinscripción, constancias y certificados.",
+        "horario": "Lunes a Viernes, 9:00 AM - 3:00 PM",
+        "contacto": "servicios@tec.mx",
+        "ubicacion": "Edificio A, planta baja"
+    },
+    {
+        "nombre": "Departamento de Recursos Financieros",
+        "descripcion": "Pagos, facturación y aclaraciones de adeudos.",
+        "horario": "Lunes a Viernes, 8:30 AM - 2:30 PM",
+        "contacto": "finanzas@tec.mx",
+        "ubicacion": "Edificio B, oficina 12"
+    },
+    {
+        "nombre": "Departamento de Actividades Extraescolares",
+        "descripcion": "Inscripción a talleres, clubes y eventos deportivos.",
+        "horario": "Lunes a Viernes, 10:00 AM - 4:00 PM",
+        "contacto": "extraescolares@tec.mx",
+        "ubicacion": "Gimnasio, planta alta"
+    }
+]

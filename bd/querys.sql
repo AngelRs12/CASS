@@ -28,7 +28,7 @@ select * from usuarios
 --uno d estos debe d funcionar
 --psql -U username -d dbname -f /path/to/backup.sql
 
---psql -U user db_name < /directory/archive.sql
+--psql -U postgres -d cass < C:\xampp\htdocs\CASS\bd\cass_backup.sql
 
 
 CREATE TABLE solicitudes (

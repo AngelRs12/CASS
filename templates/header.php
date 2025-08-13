@@ -33,16 +33,8 @@ if (session_status() === PHP_SESSION_NONE) session_start();
           </li>
 
 
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle"  id="departamentosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Departamentos
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="departamentosDropdown">
-              <li><a class="dropdown-item" href="/cass/src/deptos.php">Centro de Cómputo</a></li>
-              <li><a class="dropdown-item" href="servicios_escolares.php">Servicios Escolares</a></li>
-              <li><a class="dropdown-item" href="biblioteca.php">Biblioteca</a></li>
-              <li><a class="dropdown-item" href="otros_departamentos.php">Otros departamentos</a></li>
-            </ul>
+          <li class="nav-item ">
+            <a class="nav-link" href="/cass/src/deptos.php">Departamentos</a>
           </li>
 
           <!-- FAQ -->

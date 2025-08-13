@@ -11,8 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
             col.className = 'col-md-4 col-sm-6';
 
             col.innerHTML = `
-                <div class="card h-100 shadow-sm mb-3">
-                    <div class="card-body card-dep text-center">
+                <div class="card card-dep h-100 shadow-sm mt-3">
+                    <div class="card-body text-center">
                         <h5 class="card-title fw-bold my-3">${dep.nombre}</h5>
                         <p class="card-text">${dep.descripcion}</p>
                         <p class="mb-1"><strong>Horario:</strong> ${dep.horario}</p>
@@ -20,12 +20,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
                 </div>
             `;
-
             contenedor.appendChild(col);
         });
     })
     .catch(error => {
         console.error('Error cargando departamentos:', error);
     });
-
 });

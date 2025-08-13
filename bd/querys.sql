@@ -8,6 +8,9 @@ create table usuarios (
 	fechaRegistro timestamp default current_timestamp
 )
 
+
+SELECT idusuario FROM usuarios WHERE mail = 'a@cd.te.mx'
+
 --drop table usuarios
 
 --insert into usuarios (mail,contra,tipo) 

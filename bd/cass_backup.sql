@@ -27,7 +27,7 @@ SET default_table_access_method = heap;
 
 CREATE TABLE public.solicitudes (
     folio integer NOT NULL,
-    usuariomail character varying(254),
+    idusuario integer NOT NULL,
     tipo character varying(100),
     fechasolicitud timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
     estado character varying(50) DEFAULT 'Pendiente'::character varying,
@@ -114,9 +114,10 @@ ALTER TABLE ONLY public.usuarios ALTER COLUMN idusuario SET DEFAULT nextval('pub
 -- Data for Name: solicitudes; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.solicitudes (folio, usuariomail, tipo, fechasolicitud, estado, comentarios) FROM stdin;
-1	a@cd.te.mx	Soporte	2025-08-02 18:37:40.546457	Pendiente	Comentario
-2	a@cd.te.mx	Soporte	2025-08-02 18:55:02.722029	Pendiente	Comentario Comentario Comentario Comentario Comentario Comentario Comentario Comentario
+COPY public.solicitudes (folio, idusuario, tipo, fechasolicitud, estado, comentarios) FROM stdin;
+1	4	Descarga SolidWorks	2025-08-11 22:43:12.753431	Pendiente	
+2	4	Cambio de contraseña	2025-08-11 22:43:36.632271	Pendiente	
+3	4	Cambio de contraseña	2025-08-11 22:46:48.820184	Pendiente	
 \.
 
 
@@ -135,7 +136,7 @@ COPY public.usuarios (idusuario, mail, contra, tipo, fecharegistro) FROM stdin;
 -- Name: solicitudes_folio_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.solicitudes_folio_seq', 2, true);
+SELECT pg_catalog.setval('public.solicitudes_folio_seq', 3, true);
 
 
 --

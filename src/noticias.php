@@ -69,7 +69,7 @@ $datos = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/cass/assets
 <div class="modal fade" id="detalleModal" tabindex="-1" aria-labelledby="detalleModalLabel" aria-hidden="true" data-bs-backdrop="true" data-bs-keyboard="true">
   <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content">
-      <div class="modal-header justify-content-center text-center text-white">
+      <div class="modal-header modal-header2 justify-content-center text-center text-white">
         <h5 class="modal-title w-100" id="detalleModalLabel">Detalle</h5>
         <button type="button" class="btn-close position-absolute end-0 me-3" data-bs-dismiss="modal" aria-label="Cerrar"></button>
       </div>

@@ -2,6 +2,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const emailInput = document.getElementById("usuario");
     const passwordInput = document.getElementById("contrasena");
     const confirmPasswordInput = document.getElementById("confirmar_contrasena");
+    
+    const nameInput = document.getElementById("nombre");
+    const lastName1Input = document.getElementById("ap_pat");
+    const lastName2Input = document.getElementById("ap_mat");
+    
     const form = document.querySelector("form");
 
     emailInput.addEventListener("blur", verificarCorreoExistente);
@@ -12,6 +17,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const email = emailInput.value.trim();
         const password = passwordInput.value;
         const confirmPassword = confirmPasswordInput.value;
+        const name = nameInput.value;
+        const lname1 = lastName1Input.value.trim();
+        const lname2 = lastName2Input.value;
 
         if (!validarCorreo(email)) {
             mostrarModal("Error", "El correo debe ser institucional (@cd.te.mx)");
@@ -31,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
         fetch('/cass/auth/registro.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ usuario: email, contrasena: password })
+            body: JSON.stringify({ usuario: email, contrasena: password, nombre: name, appat: lname1, apmat: lname2,})
         })
         .then(response => response.json())
         .then(data => {

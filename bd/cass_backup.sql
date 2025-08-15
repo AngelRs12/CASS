@@ -66,8 +66,12 @@ ALTER SEQUENCE public.solicitudes_folio_seq OWNED BY public.solicitudes.folio;
 CREATE TABLE public.usuarios (
     idusuario integer NOT NULL,
     mail character varying(254) NOT NULL,
-    contra character varying(255),
+    contra character varying(255) NOT NULL,
+    nombre character varying(50) NOT NULL,
+    ap_pat character varying(50) NOT NULL,
+    ap_mat character varying(50),
     tipo character varying(50),
+    activo character(1) DEFAULT '1'::bpchar,
     fecharegistro timestamp without time zone DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -118,6 +122,7 @@ COPY public.solicitudes (folio, idusuario, tipo, fechasolicitud, estado, comenta
 1	4	Descarga SolidWorks	2025-08-11 22:43:12.753431	Pendiente	
 2	4	Cambio de contraseña	2025-08-11 22:43:36.632271	Pendiente	
 3	4	Cambio de contraseña	2025-08-11 22:46:48.820184	Pendiente	
+4	4	Descarga Office	2025-08-13 18:12:32.004904	Pendiente	aaaa
 \.
 
 
@@ -125,10 +130,9 @@ COPY public.solicitudes (folio, idusuario, tipo, fechasolicitud, estado, comenta
 -- Data for Name: usuarios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.usuarios (idusuario, mail, contra, tipo, fecharegistro) FROM stdin;
-1	a@a.com	1234	tipo1	2025-07-31 16:19:38.826541
-3	a2@a.com	1234	tipo1	2025-07-31 16:19:59.765772
-4	a@cd.te.mx	$2y$10$iWU6HC4GueKap5xE.vcL4esxPOM9LN/QpnTyrc2d83qbIk0g/HQrm	1	2025-08-02 15:23:10.919768
+COPY public.usuarios (idusuario, mail, contra, nombre, ap_pat, ap_mat, tipo, activo, fecharegistro) FROM stdin;
+1	a@cd.te.mx	$2y$10$LjFqS4yjeKO6GZ3YufPD8Odo4SQXzwhbPm8yUS3guDZjMa72NQEYC	a	a	a	1	1	2025-08-15 12:37:13.269073
+2	a1@cd.te.mx	$2y$10$Q9GBPn18fuNQRCVGajPxSOG4PC34Ii5EfvJyBM55O3Z9GXL.KEGLa	a	a	a	1	1	2025-08-15 12:37:41.151135
 \.
 
 
@@ -136,14 +140,14 @@ COPY public.usuarios (idusuario, mail, contra, tipo, fecharegistro) FROM stdin;
 -- Name: solicitudes_folio_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.solicitudes_folio_seq', 3, true);
+SELECT pg_catalog.setval('public.solicitudes_folio_seq', 4, true);
 
 
 --
 -- Name: usuarios_idusuario_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.usuarios_idusuario_seq', 4, true);
+SELECT pg_catalog.setval('public.usuarios_idusuario_seq', 2, true);
 
 
 --

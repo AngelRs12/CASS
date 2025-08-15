@@ -1,10 +1,11 @@
 [
     {
-        "nombre": "Departamento de Servicios Escolares",
-        "descripcion": "Trámites de reinscripción, constancias y certificados.",
+        "nombre": "Departamento de Sistemas",
+        "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         "horario": "Lunes a Viernes, 9:00 AM - 3:00 PM",
         "contacto": "servicios@tec.mx",
-        "ubicacion": "Edificio A, planta baja"
+        "ubicacion": "Edificio A, planta baja",
+        "imagen": "/cass/assets/Img/departamentos/sistemas.jpg"
     },
     {
         "nombre": "Departamento de Recursos Financieros",
@@ -18,6 +19,7 @@
         "descripcion": "Inscripción a talleres, clubes y eventos deportivos.",
         "horario": "Lunes a Viernes, 10:00 AM - 4:00 PM",
         "contacto": "extraescolares@tec.mx",
-        "ubicacion": "Gimnasio, planta alta"
+        "ubicacion": "Gimnasio, planta alta",
+        "imagen": "/cass/assets/default.jpg"
     }
 ]

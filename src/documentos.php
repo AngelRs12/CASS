@@ -1,4 +1,6 @@
-<?php include($_SERVER['DOCUMENT_ROOT'] . '/cass/templates/header.php'); 
+<?php 
+session_start();
+include($_SERVER['DOCUMENT_ROOT'] . '/cass/templates/header.php'); 
 
 function listarArchivos($ruta_relativa) {
     $ruta = $_SERVER['DOCUMENT_ROOT'] . $ruta_relativa;
@@ -25,6 +27,9 @@ $documentos = [
     'formatos' => listarArchivos('/cass/assets/Formatos'),
     'manuales' => listarArchivos('/cass/assets/Manuales')
 ];
+
+// Rol del usuario
+$tipoUsuario = $_SESSION['tipo'] ?? '1';
 ?>
 
 <!DOCTYPE html>
@@ -39,13 +44,14 @@ $documentos = [
     <link rel="stylesheet" href="/cass/styles/global.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="/cass/styles/documentos.css">
-
-
 </head>
+
 <script>
     const documentos = <?php echo json_encode($documentos, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>;
+    const tipoUsuario = "<?php echo $tipoUsuario; ?>"; // <-- IMPORTANTE
 </script>
-    <script src="/cass/scripts/documentos.js"></script>
+<script src="/cass/scripts/documentos.js"></script>
+
 <body>
     <div class="page-wrapper">
         <div class="content-wrapper">
@@ -62,31 +68,25 @@ $documentos = [
                                 </ul>
                                 <hr>
                                 <section id="cuentas" class="mb-5 mt-4">
-                                    <h3>Guias de procesos</h3>
-                                   
+                                    <h3>Guías de procesos</h3>
                                 </section>
 
                                 <section id="formatos" class="mb-5">
                                     <h3>Formatos descargables</h3>
-                                   
                                 </section>
 
                                 <section id="Manualess" class="mb-5">
-                                   <h3>Manuales</h3>
+                                    <h3>Manuales</h3>
                                 </section>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
         <?php include($_SERVER['DOCUMENT_ROOT'] . '/cass/templates/footer.php'); ?>
     </div>
     <!-- Scripts -->
     <script src="/cass/scripts/bootstrap.bundle.min.js"></script>
-
-    
 </body>
-
 </html>

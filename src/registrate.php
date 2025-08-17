@@ -28,14 +28,45 @@ if (isset($_GET['mensaje'])) {
                             <div class="card border-radius-card my-5">
                                 <div class="card-body">
                                     <h2>Registrate</h2>
+
                                     <div class="mb-3">
-                                        <label for="usuario" class="form-label">Correo electrónico</label>
+                                        <label for="nombre" class="form-label">Nombre</label>
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            name="nombre"
+                                            id="nombre"
+                                            placeholder="Nombre(s)"
+                                            required />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="ap_pat" class="form-label">Apellido Paterno</label>
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            name="ap_pat"
+                                            id="ap_pat"
+                                            placeholder="Apellido paterno"
+                                            required />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="ap_mat" class="form-label">Apellido Materno</label>
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            name="ap_mat"
+                                            id="ap_mat"
+                                            placeholder="Apellido materno" />
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="usuario" class="form-label">Correo institucional</label>
                                         <input
                                             type="text"
                                             class="form-control"
                                             name="usuario"
                                             id="usuario"
-                                            placeholder="Correo institucional"
+                                            placeholder="Correo electrónico"
                                             required />
                                     </div>
 
@@ -61,7 +92,7 @@ if (isset($_GET['mensaje'])) {
                                             required />
                                     </div>
 
-                                    <button class="btn btn-danger form-control border-radiusbtn" type="submit" name="submit">Registrar</button>
+                                    <button class="btn btn-danger form-control border-radiusbtn mt-3" type="submit" name="submit">Registrar</button>
                                     <button class="btn btn-secondary form-control border-radiusbtn mt-3" type="button" onclick="history.back()">Volver</button>
                                 </div>
                             </div>
@@ -76,17 +107,17 @@ if (isset($_GET['mensaje'])) {
 
 
     <div class="modal fade" id="mensajeModal" tabindex="-1" aria-labelledby="mensajeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="mensajeModalLabel">Mensaje</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-      </div>
-      <div class="modal-body" id="mensajeModalBody">
-      </div>
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="mensajeModalLabel">Mensaje</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body" id="mensajeModalBody">
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 
 
 </body>

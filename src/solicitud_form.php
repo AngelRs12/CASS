@@ -1,6 +1,9 @@
 <?php include($_SERVER['DOCUMENT_ROOT'] . '/cass/templates/header.php');
 
 $correoUsuario = isset($_SESSION['correo']) ? $_SESSION['correo'] : '';
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/cass/auth/auth.php');
+verificarAcceso(["1"]); 
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

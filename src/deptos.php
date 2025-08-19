@@ -15,11 +15,7 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
             border-radius: 0.25rem;
-            /* opcional, para que se vea igual que bootstrap */
-            /* cualquier otro estilo base que quieras */
         }
-
-
         .card-dep:hover {
             transform: translateY(-6px) scale(1.03);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);

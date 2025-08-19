@@ -29,7 +29,7 @@ $documentos = [
 ];
 
 // Rol del usuario
-$tipoUsuario = $_SESSION['tipo'] ?? '1';
+$tipoUsuario = $_SESSION['tipo'] ?? '0';
 ?>
 
 <!DOCTYPE html>

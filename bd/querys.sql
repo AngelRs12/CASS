@@ -42,6 +42,8 @@ values ('a2@a.com','1234','1')
 
 select * from usuarios
 
+--update usuarios set tipo = '3'
+where idusuario= 2
 
 
 

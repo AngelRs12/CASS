@@ -1,5 +1,9 @@
 <?php include($_SERVER['DOCUMENT_ROOT'] . '/cass/templates/header.php'); ?>
 
+<?php
+$timeout = isset($_GET['timeout']) && $_GET['timeout'] == '1';
+?>
+
 <!doctype html>
 
 <html lang="en">
@@ -76,9 +80,6 @@
         crossorigin="anonymous"></script>
     <script src="/cass/scripts/bootstrap.bundle.min.js"></script>
     <script src="/cass/scripts/login.js"></script>
-<<<<<<< HEAD
-=======
 
->>>>>>> 1f46bbd104b3cef27572390c545cb7484e3378a9
 
 </html>

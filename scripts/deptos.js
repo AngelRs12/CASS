@@ -22,7 +22,8 @@ document.addEventListener("DOMContentLoaded", () => {
         modalContacto.href = `mailto:${dep.contacto}`;
         modalUbicacion.textContent = dep.ubicacion;
         modalInfoAdicional.textContent = dep["info adicional"];
-        modalImagen.src = dep.imagen;
+        const img = dep.imagen ? dep.imagen : "/cass/assets/default.jpg";
+        modalImagen.src = img;
         currentIndex = index;
     }
 
@@ -32,11 +33,12 @@ document.addEventListener("DOMContentLoaded", () => {
             departamentos = data;
 
             data.forEach((dep, index) => {
+                const img = dep.imagen ? dep.imagen : "/cass/assets/default.jpg";
                 const col = document.createElement('div');
                 col.className = 'col-md-4 col-sm-6 mb-4';
                 col.innerHTML = `
                     <div class="card h-100 shadow-sm card-dep text-center" data-index="${index}">
-                        <img src="${dep.imagen}" class="card-img-top rounded mb-3" alt="${dep.nombre}">
+                        <img src="${img}" class="card-img-top rounded mb-3" alt="${dep.nombre}">
                         <h4 class="card-title">${dep.nombre}</h5>
                     </div>
                 `;

@@ -2,7 +2,7 @@
 
 $correoUsuario = isset($_SESSION['correo']) ? $_SESSION['correo'] : '';
 require_once ($_SERVER['DOCUMENT_ROOT'] . '/cass/auth/auth.php');
-verificarAcceso(["1"]); 
+verificarAcceso(["1","2","3"]); 
 
 ?>
 <!DOCTYPE html>
@@ -43,7 +43,7 @@ verificarAcceso(["1"]);
                                     </div>
 
                                     <div class="mb-4">
-                                        <label for="comentarios" class="form-label">Comentarios (opcional)</label>
+                                        <label for="comentarios" rows="3" class="form-label">Comentarios (opcional)</label>
                                         <textarea class="form-control" id="comentarios" name="comentarios" rows="3"></textarea>
                                     </div>
 

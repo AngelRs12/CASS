@@ -3,7 +3,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/cass/auth/auth.php');
 verificarAcceso(["1", "2", "3"]);
 
 $tipoUsuario = $_SESSION['tipo'] ?? '0';
-//$tipoUsuario = '2';
+
 $nombre = $_SESSION['nombre'] ?? '';
 $apellido = $_SESSION['apellido'] ?? '';
 $idUsr = $_SESSION['idUsuario'];

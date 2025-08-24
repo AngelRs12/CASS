@@ -1,7 +1,7 @@
 <?php include($_SERVER['DOCUMENT_ROOT'] . '/cass/templates/header.php');
 
-//  $tipoUsuario = $_SESSION['tipo'] ?? '0';
-$tipoUsuario = '1';
+$tipoUsuario = $_SESSION['tipo'] ?? '0';
+
 ?>
 
 <script>
@@ -144,7 +144,7 @@ $tipoUsuario = '1';
 
                             <div class="modal-footer justify-content-between mt-4">
                                 <button type="button" class="btn btn-secondary" id="prevDepto">
-                                    << /button>
+                                    <   </button>
                                         <button type="button" class="btn btn-secondary" id="nextDepto">></button>
                             </div>
                         <?php endif; ?>

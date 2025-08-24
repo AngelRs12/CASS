@@ -3,7 +3,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/cass/auth/auth.php');
 verificarAcceso(["1", "2", "3"]);
 
 $tipoUsuario = $_SESSION['tipo'] ?? '0';
-//$tipoUsuario = '1';
+//$tipoUsuario = '2';
 $nombre = $_SESSION['nombre'] ?? '';
 $apellido = $_SESSION['apellido'] ?? '';
 $idUsr = $_SESSION['idUsuario'];
@@ -39,7 +39,7 @@ $idUsr = $_SESSION['idUsuario'];
                             <div class="card-body">
 
                                 <div class="d-flex justify-content-between align-items-center my-4">
-                                    <h2 class="mb-4">Mis solicitudes</h2>
+                                    <h2 class="mb-4">Solicitudes</h2>
                                     <input type="text" id="searchInput" class="form-control w-50" placeholder="Buscar por folio, tipo o estado">
                                 </div>
                                 <div class="table-responsive">
@@ -52,7 +52,7 @@ $idUsr = $_SESSION['idUsuario'];
                                                 <th>Estado</th>
                                                 <th>Comentarios</th>
                                                 <?php if ($tipoUsuario == 1): ?>
-                                                    <th>Atendio</th>
+                                                    <th>Editado por</th>
                                                     <th>Editar</th>
                                                 <?php endif; ?>
 

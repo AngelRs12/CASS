@@ -39,8 +39,16 @@ document.addEventListener("DOMContentLoaded", () => {
         let end = start + rowsPerPage;
         let pageSolicitudes = filteredSolicitudes.slice(start, end);
 
+        
         if (filteredSolicitudes.length === 0) {
-            tbody.innerHTML = `<tr><td colspan="5" class="text-center text-muted">No se encontraron resultados.</td></tr>`;
+
+            if (tipoUsuario == 1) {
+                tbody.innerHTML = `<tr><td colspan="7" class="text-center text-muted">No se encontraron resultados.</td></tr>`;
+            }else{
+                tbody.innerHTML = `<tr><td colspan="5" class="text-center text-muted">No se encontraron resultados.</td></tr>`;
+            }
+
+            
             return;
         }
 

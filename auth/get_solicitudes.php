@@ -4,7 +4,7 @@ header('Content-Type: application/json');
 include($_SERVER['DOCUMENT_ROOT'] . '/cass/configs/connectDB.php');
 
 $usuario = isset($_SESSION['idUsuario']) ? $_SESSION['idUsuario'] : '';
-$rol     = isset($_SESSION['tipo']) ? $_SESSION['tipo'] : '0';
+$rol = isset($_SESSION['tipo']) ? $_SESSION['tipo'] : '0';
 
 if (!$usuario) {
     echo json_encode([]);

@@ -58,7 +58,7 @@ if (session_status() === PHP_SESSION_NONE) session_start();
             </li>-->
 
             <li class="nav-item ">
-            <a class="nav-link" href="solicitud_form.php">Solicitud de soporte técnico</a>
+            <a class="nav-link" href="solicitud_form.php">Solicitud de Soporte técnico</a>
           </li>
 
           <?php endif; ?>

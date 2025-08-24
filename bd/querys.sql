@@ -75,4 +75,5 @@ Comentario Comentario Comentario Comentario')
 
 
 select * from solicitudes
+where idusuario = 2
 

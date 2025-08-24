@@ -1,4 +1,12 @@
-<?php include($_SERVER['DOCUMENT_ROOT'] . '/cass/templates/header.php'); ?>
+<?php include($_SERVER['DOCUMENT_ROOT'] . '/cass/templates/header.php');
+
+//  $tipoUsuario = $_SESSION['tipo'] ?? '0';
+$tipoUsuario = '1';
+?>
+
+<script>
+    const tipoUsuario = "<?php echo $tipoUsuario; ?>";
+</script>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -16,6 +24,7 @@
             cursor: pointer;
             border-radius: 0.25rem;
         }
+
         .card-dep:hover {
             transform: translateY(-6px) scale(1.03);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
@@ -27,7 +36,6 @@
         }
 
         .card-dep .card-img-top {
-
             object-fit: cover;
             object-position: center;
             border-top-left-radius: 0.375rem;
@@ -44,11 +52,17 @@
                     <div class="col-md-12">
                         <div class="card border-radius-card my-5 px-4">
                             <div class="card-body">
-                                <h2 class="my-4">Departamentos</h1>
-                                    <section class="mb-4">
-                                        <div id="departamentos-container" class="row">
-                                        </div>
-                                    </section>
+                                <h2 class="my-4">
+                                    Departamentos</h2>
+                                <?php if ($tipoUsuario == 1): ?>
+                                    <div class="mb-4 d-flex justify-content-end ">
+                                        <button class="btn btn-success btn-sm" id="btnNuevoDepto">Nuevo +</button>
+                                    </div>
+                                <?php endif; ?>
+
+                                <section class="mb-4">
+                                    <div id="departamentos-container" class="row"></div>
+                                </section>
                             </div>
                         </div>
                     </div>
@@ -67,28 +81,79 @@
                 </div>
                 <div class="modal-body">
                     <div class="row align-items-center">
-                        <div class="col-md-5 text-center">
-                            <img id="modalImagen" class="img-fluid rounded mb-3" alt="Imagen del departamento">
-                        </div>
-                        <div class="col-md-7 mt-3">
-                            <p id="modalDescripcion"></p>
-                            <p><strong>Horario:</strong> <span id="modalHorario"></span></p>
-                            <p><strong>Contacto:</strong> <a href="#" id="modalContacto"></a></p>
-                            <p><strong>Ubicación:</strong> <span id="modalUbicacion"></span></p>
-                            <p><strong>Información adicional:</strong> <span id="modalInfoAdicional"></span></p>
-                        </div>
-                    </div>
-                    <div class="modal-footer justify-content-between mt-4">
-                        <button type="button" class="btn btn-secondary" id="prevDepto"><
-                        </button>
-                        <button type="button" class="btn btn-secondary" id="nextDepto">> 
-                        </button>
+
+                        <?php if ($tipoUsuario == 1): ?>
+
+                            <form id="formDepto">
+                                <input type="hidden" name="index" id="modalIndex">
+                                <input type="hidden" name="isNew" id="isNew" value="0">
+
+                                <div class="mb-3">
+                                    <label for="modalNombreInput" class="form-label">Nombre</label>
+                                    <input type="text" class="form-control" id="modalNombreInput" name="nombre">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="modalDescripcionInput" class="form-label">Descripción</label>
+                                    <textarea class="form-control" id="modalDescripcionInput" name="descripcion"></textarea>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="modalHorarioInput" class="form-label">Horario</label>
+                                    <input type="text" class="form-control" id="modalHorarioInput" name="horario">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="modalContactoInput" class="form-label">Contacto</label>
+                                    <input type="email" class="form-control" id="modalContactoInput" name="contacto">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="modalUbicacionInput" class="form-label">Ubicación</label>
+                                    <input type="text" class="form-control" id="modalUbicacionInput" name="ubicacion">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Imagen</label>
+                                    <input type="file" name="imagen" id="deptoImagen" class="form-control">
+                                </div>
+                            </form>
+
+                            <div class="modal-footer justify-content-between">
+
+                                <button type="button" class="btn btn-secondary" id="prevDepto">
+                                    < </button>
+                                        <button type="button" class="btn btn-danger" id="btnEliminarDepto">Eliminar</button>
+                                        <button type="button" class="btn btn-success" id="btnGuardarDepto">Guardar</button>
+                                        <button type="button" class="btn btn-secondary" id="nextDepto">></button>
+
+                            </div>
+
+                        <?php else: ?>
+
+                            <div class="col-md-5 text-center">
+                                <img id="modalImagen" class="img-fluid rounded mb-3" alt="Imagen del departamento">
+                            </div>
+                            <div class="col-md-7 mt-3">
+                                <p id="modalDescripcion"></p>
+                                <p><strong>Horario:</strong> <span id="modalHorario"></span></p>
+                                <p><strong>Contacto:</strong> <a href="#" id="modalContacto"></a></p>
+                                <p><strong>Ubicación:</strong> <span id="modalUbicacion"></span></p>
+                                <p><strong>Información adicional:</strong> <span id="modalInfoAdicional"></span></p>
+                            </div>
+
+                            <div class="modal-footer justify-content-between mt-4">
+                                <button type="button" class="btn btn-secondary" id="prevDepto">
+                                    << /button>
+                                        <button type="button" class="btn btn-secondary" id="nextDepto">></button>
+                            </div>
+                        <?php endif; ?>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 
     <script src="/cass/scripts/bootstrap.bundle.min.js"></script>
     <script src="/cass/scripts/deptos.js"></script>

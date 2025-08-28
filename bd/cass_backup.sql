@@ -31,7 +31,8 @@ CREATE TABLE public.solicitudes (
     tipo character varying(100),
     fechasolicitud timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
     estado character varying(50) DEFAULT 'Pendiente'::character varying,
-    comentarios text
+    comentarios text,
+    atendidopor integer DEFAULT 0
 );
 
 
@@ -118,11 +119,15 @@ ALTER TABLE ONLY public.usuarios ALTER COLUMN idusuario SET DEFAULT nextval('pub
 -- Data for Name: solicitudes; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.solicitudes (folio, idusuario, tipo, fechasolicitud, estado, comentarios) FROM stdin;
-1	4	Descarga SolidWorks	2025-08-11 22:43:12.753431	Pendiente	
-2	4	Cambio de contraseña	2025-08-11 22:43:36.632271	Pendiente	
-3	4	Cambio de contraseña	2025-08-11 22:46:48.820184	Pendiente	
-4	4	Descarga Office	2025-08-13 18:12:32.004904	Pendiente	aaaa
+COPY public.solicitudes (folio, idusuario, tipo, fechasolicitud, estado, comentarios, atendidopor) FROM stdin;
+5	2	Soporte	2025-08-20 17:44:16.561435	Pendiente	Comentario Comentario Comentario Comentario \nComentario Comentario Comentario Comentario	3
+6	2	Soporte	2025-08-20 17:44:19.208276	Pendiente	Comentario Comentario Comentario Comentario \nComentario Comentario Comentario Comentario	0
+7	2	Soporte	2025-08-20 17:44:19.380612	Pendiente	Comentario Comentario Comentario Comentario \nComentario Comentario Comentario Comentario	0
+4	2	Soporte	2025-08-20 17:44:16.333445	Pendiente	Comentario Comentario Comentario Comentario \r\nComentario Comentario Comentario Comentario	1
+2	2	Soporte	2025-08-20 17:42:54.911188	Aprobado	chsm to	1
+1	2	Soporte	2025-08-20 17:42:53.028898	Rechazado	a	1
+3	2	Soporte	2025-08-20 17:44:14.94248	Rechazado	test	1
+8	1	Descarga Office	2025-08-22 14:16:37.239409	Pendiente	safsdff	0
 \.
 
 
@@ -131,8 +136,9 @@ COPY public.solicitudes (folio, idusuario, tipo, fechasolicitud, estado, comenta
 --
 
 COPY public.usuarios (idusuario, mail, contra, nombre, ap_pat, ap_mat, tipo, activo, fecharegistro) FROM stdin;
-1	a@cd.te.mx	$2y$10$LjFqS4yjeKO6GZ3YufPD8Odo4SQXzwhbPm8yUS3guDZjMa72NQEYC	a	a	a	1	1	2025-08-15 12:37:13.269073
-2	a1@cd.te.mx	$2y$10$Q9GBPn18fuNQRCVGajPxSOG4PC34Ii5EfvJyBM55O3Z9GXL.KEGLa	a	a	a	1	1	2025-08-15 12:37:41.151135
+2	a1@cd.te.mx	$2y$10$Q9GBPn18fuNQRCVGajPxSOG4PC34Ii5EfvJyBM55O3Z9GXL.KEGLa	a	a	a	3	1	2025-08-15 12:37:41.151135
+3	a3@cd.te.mx	$2y$10$8IoS5z3F0a7B4f0MyvyLues4C6orbUG7dutcbSsau02WlrVw8pCVC	test	test	test	2	1	2025-08-20 11:59:50.495605
+1	a@cd.te.mx	$2y$10$LjFqS4yjeKO6GZ3YufPD8Odo4SQXzwhbPm8yUS3guDZjMa72NQEYC	bonk	bonk	a	1	1	2025-08-15 12:37:13.269073
 \.
 
 
@@ -140,14 +146,14 @@ COPY public.usuarios (idusuario, mail, contra, nombre, ap_pat, ap_mat, tipo, act
 -- Name: solicitudes_folio_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.solicitudes_folio_seq', 4, true);
+SELECT pg_catalog.setval('public.solicitudes_folio_seq', 8, true);
 
 
 --
 -- Name: usuarios_idusuario_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.usuarios_idusuario_seq', 2, true);
+SELECT pg_catalog.setval('public.usuarios_idusuario_seq', 3, true);
 
 
 --

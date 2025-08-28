@@ -40,12 +40,11 @@ if (session_status() === PHP_SESSION_NONE) session_start();
           <!-- FAQ -->
           <li class="nav-item ">
             <a class="nav-link" href="/cass/src/faq.php">Soporte y FAQs</a>
-            
           </li>
 
           
 
-          <!-- FORMULARIOS (PROTEGIDO) -->
+          <!-- FORMULARIOS (PROTEGIDO) 
           <?php if (isset($_SESSION["correo"])): ?>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="formulariosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -56,8 +55,17 @@ if (session_status() === PHP_SESSION_NONE) session_start();
                 <li><a class="dropdown-item" href="reporte_falla.php">Reporte de fallas</a></li>
                 <li><a class="dropdown-item" href="otros_formularios.php">Otros trámites</a></li>
               </ul>
-            </li>
+            </li>-->
+
+            <li class="nav-item ">
+            <a class="nav-link" href="solicitud_form.php">Solicitud de Soporte técnico</a>
+          </li>
+
           <?php endif; ?>
+    
+
+          
+          
 
           <!-- DOCUMENTOS -->
            <li class="nav-item ">

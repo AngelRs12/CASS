@@ -13,7 +13,7 @@ if (empty($correo) || empty($password)) {
 }
 
 try {
-    $stmt = $conn->prepare("SELECT idUsuario, mail, contra, tipo FROM usuarios WHERE mail = :mail");
+    $stmt = $conn->prepare("SELECT idUsuario,nombre,ap_pat, mail, contra, tipo FROM usuarios WHERE mail = :mail");
     $stmt->bindParam(':mail', $correo, PDO::PARAM_STR);
     $stmt->execute();
 
@@ -26,6 +26,8 @@ try {
 
     if (password_verify($password, $user['contra'])) {
         $_SESSION['idUsuario'] = $user['idusuario'];
+        $_SESSION['nombre'] = $user['nombre'];
+        $_SESSION['apellido'] = $user['ap_pat'];
         $_SESSION['correo'] = $user['mail'];
         $_SESSION['tipo'] = $user['tipo'];
 

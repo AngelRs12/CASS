@@ -1,7 +1,7 @@
 <?php include($_SERVER['DOCUMENT_ROOT'] . '/cass/templates/header.php');
 
 $tipoUsuario = $_SESSION['tipo'] ?? '0';
-
+//$tipoUsuario = '0';
 ?>
 
 <script>
@@ -85,8 +85,9 @@ $tipoUsuario = $_SESSION['tipo'] ?? '0';
                         <?php if ($tipoUsuario == 1): ?>
 
                             <form id="formDepto">
-                                <input type="hidden" name="index" id="modalIndex">
+                                <input type="hidden" name="id" id="modalIdDepto">
                                 <input type="hidden" name="isNew" id="isNew" value="0">
+                                <input type="hidden" name="imagen_actual" id="imagenActual">
 
                                 <div class="mb-3">
                                     <label for="modalNombreInput" class="form-label">Nombre</label>

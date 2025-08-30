@@ -1,46 +1,41 @@
 <?php
-
 session_start();
 header('Content-Type: application/json');
-// Verificar rol explícitamente
+require_once($_SERVER['DOCUMENT_ROOT'] . "/cass/configs/connectDB.php");
+
+// Verificar rol
 if (!isset($_SESSION['tipo']) || intval($_SESSION['tipo']) !== 1) {
     http_response_code(403);
     echo json_encode(["success" => false, "message" => "No autorizado"]);
     exit;
 }
 
-// Solo permitir POST
+// Solo POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
     echo json_encode(["success" => false, "message" => "Método no permitido"]);
     exit;
 }
 
-$jsonFile = $_SERVER['DOCUMENT_ROOT'] . '/cass/assets/deptos.json';
-if (!file_exists($jsonFile)) {
-    echo json_encode(['success' => false, 'message' => 'Archivo JSON no encontrado']);
-    exit;
-}
-
-$departamentos = json_decode(file_get_contents($jsonFile), true);
-if (!is_array($departamentos)) {
-    $departamentos = [];
-}
-
 $accion = $_POST['accion'] ?? 'guardar';
 
-if ($accion === "eliminar") {
-    $index = filter_input(INPUT_POST, 'index', FILTER_VALIDATE_INT);
-    if ($index === false || !isset($departamentos[$index])) {
-        echo json_encode(['success' => false, 'message' => 'Departamento no válido']);
-        exit;
-    }
-    array_splice($departamentos, $index, 1);
+try {
+    if ($accion === "eliminar") {
+        $id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
+        if ($id === false || $id === null || $id <= 0) {
+            throw new Exception("ID inválido");
+        }
 
-} else {
-    $isNew = isset($_POST['isNew']) && $_POST['isNew'] === "1";
-    
-    $imagenPath = "";
+        $stmt = $conn->prepare("DELETE FROM departamentos WHERE iddepto = ?");
+        $stmt->execute([$id]);
+
+        echo json_encode(["success" => true]);
+        exit;
+    } else {
+        $isNew = isset($_POST['isNew']) && $_POST['isNew'] === "1";
+
+        // Imagen
+        $imagenPath = "";
         if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
             $uploadDir = $_SERVER['DOCUMENT_ROOT'] . "/cass/assets/Img/departamentos/";
             if (!is_dir($uploadDir)) {
@@ -55,39 +50,34 @@ if ($accion === "eliminar") {
             }
         }
 
-    // Sanitizar entradas
-    $nuevoDepto = [
-        'nombre'      => htmlspecialchars(trim($_POST['nombre'] ?? ''), ENT_QUOTES, 'UTF-8'),
-        'descripcion' => htmlspecialchars(trim($_POST['descripcion'] ?? ''), ENT_QUOTES, 'UTF-8'),
-        'horario'     => htmlspecialchars(trim($_POST['horario'] ?? ''), ENT_QUOTES, 'UTF-8'),
-        'contacto'    => htmlspecialchars(trim($_POST['contacto'] ?? ''), ENT_QUOTES, 'UTF-8'),
-        'ubicacion'   => htmlspecialchars(trim($_POST['ubicacion'] ?? ''), ENT_QUOTES, 'UTF-8'),
-        'imagen'      => $imagenPath ?: filter_var(trim($_POST['imagen'] ?? ''), FILTER_SANITIZE_URL)
-    ];
+        $nombre = trim($_POST['nombre'] ?? '');
+        $descripcion = trim($_POST['descripcion'] ?? '');
+        $horario = trim($_POST['horario'] ?? '');
+        $contacto = trim($_POST['contacto'] ?? '');
+        $ubicacion = trim($_POST['ubicacion'] ?? '');
+        // usar imagen_actual si no se subió nueva
+        $imagen = $imagenPath ?: trim($_POST['imagen_actual'] ?? '');
 
-    if ($isNew) {
-        $departamentos[] = $nuevoDepto;
-    } else {
-        $index = filter_input(INPUT_POST, 'index', FILTER_VALIDATE_INT);
-        if ($index === false || !isset($departamentos[$index])) {
-            echo json_encode(['success' => false, 'message' => 'Departamento no válido']);
-            exit;
+        if ($isNew) {
+            $stmt = $conn->prepare("INSERT INTO departamentos (nombre, descripcion, horario, contacto, ubicacion, imagen) 
+                                   VALUES (?, ?, ?, ?, ?, ?)");
+            $stmt->execute([$nombre, $descripcion, $horario, $contacto, $ubicacion, $imagen]);
+        } else {
+            $id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
+            if ($id === false || $id === null || $id <= 0) {
+                throw new Exception("ID inválido");
+            }
+
+            $stmt = $conn->prepare("UPDATE departamentos 
+                                   SET nombre = ?, descripcion = ?, horario = ?, contacto = ?, ubicacion = ?, imagen = ?, lastedit = NOW()
+                                   WHERE iddepto = ?");
+            $stmt->execute([$nombre, $descripcion, $horario, $contacto, $ubicacion, $imagen, $id]);
         }
-        $departamentos[$index] = $nuevoDepto;
+
+        echo json_encode(["success" => true]);
+        exit;
     }
-}
-
-// Guardar archivo de forma segura
-$result = file_put_contents(
-    $jsonFile,
-    json_encode($departamentos, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
-    LOCK_EX // evita condiciones de carrera
-);
-
-if ($result === false) {
+} catch (Exception $e) {
     http_response_code(500);
-    echo json_encode(['success' => false, 'message' => 'Error al guardar el archivo']);
-    exit;
+    echo json_encode(["success" => false, "message" => $e->getMessage()]);
 }
-
-echo json_encode(['success' => true]);

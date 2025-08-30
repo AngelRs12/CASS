@@ -76,4 +76,23 @@ Comentario Comentario Comentario Comentario')
 
 select * from solicitudes
 where idusuario = 2
+----------------------------------------------------------
+
+
+create table departamentos (
+	idDepto SERIAL primary key,
+	nombre varchar(255),
+	descripcion text,
+	horario varchar(50),
+	contacto  varchar(255),
+	ubicacion  varchar(255),
+	imagen text,
+	fechaRegistro timestamp default current_timestamp,
+	lastEdit timestamp default current_timestamp
+)
+--drop table departamentos
+
+
+select * from departamentos 
+
 

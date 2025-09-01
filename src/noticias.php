@@ -1,6 +1,6 @@
 <?php
 include($_SERVER['DOCUMENT_ROOT'] . '/cass/templates/header.php');
-
+$tipoUsuario = $_SESSION['tipo'] ?? '0';
 function listarArchivos($ruta_relativa) {
     $ruta = $_SERVER['DOCUMENT_ROOT'] . $ruta_relativa;
     $archivos = [];
@@ -19,8 +19,6 @@ function listarArchivos($ruta_relativa) {
 
     return $archivos;
 }
-
-$datos = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/cass/assets/datos_noticias_eventos.json'), true);
 
 ?>
 
@@ -49,7 +47,12 @@ $datos = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/cass/assets
                         <li class="list-group-item border-top-0 border-bottom-0 "><a href="#noticias">Noticias</a></li>
                         <li class="list-group-item border-top-0 border-bottom-0"><a href="#eventos">Eventos</a></li>
                     </ul>
+       <?php if ($tipoUsuario == 1): ?>
+                        <div class="mb-4 d-flex justify-content-end">
+                            <button class="btn btn-success btn-sm" id="btnNuevoNoticiaAviso" data-bs-toggle="modal" data-bs-target="#modalNoticias">Nuevo +</button>
 
+                        </div>
+                    <?php endif; ?>
                     <section id="noticias" class="mb-5">
                         <h3>Noticias</h3>
                         <div class="row" id="contenedor-noticias"></div>
@@ -65,34 +68,69 @@ $datos = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/cass/assets
     </div>
     <?php include($_SERVER['DOCUMENT_ROOT'] . '/cass/templates/footer.php'); ?>
 </div>
-
-<div class="modal fade" id="detalleModal" tabindex="-1" aria-labelledby="detalleModalLabel" aria-hidden="true" data-bs-backdrop="true" data-bs-keyboard="true">
+<div class="modal fade" id="modalNoticias" tabindex="-1" aria-labelledby="nuevoNoticiaLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header modal-header2 justify-content-center text-center text-white">
-        <h5 class="modal-title w-100" id="detalleModalLabel">Detalle</h5>
+        <h5 class="modal-title w-100" id="nuevoNoticiaLabel">Añadir Nueva Noticia/Evento</h5>
         <button type="button" class="btn-close position-absolute end-0 me-3" data-bs-dismiss="modal" aria-label="Cerrar"></button>
       </div>
       <div class="modal-body">
-        <div class="row align-items-center">
-
-          <div class="col-md-5 text-center">
-            <img id="modalImagen" src="" class="img-fluid rounded mb-3 mb-md-0" alt="Imagen detalle" style="max-height: 300px;">
+        <form id="formNuevaNoticia" enctype="multipart/form-data">
+            <input type="hidden" id="idNoticia" name="idNoticia" value="">
+          
+          <!-- Radios para seleccionar tipo -->
+          <div class="mb-3">
+            <label class="form-label">Tipo:</label>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="tipo" id="tipoNoticia" value="noticia" checked>
+              <label class="form-check-label" for="tipoNoticia">Noticia</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="tipo" id="tipoEvento" value="evento">
+              <label class="form-check-label" for="tipoEvento">Evento</label>
+            </div>
           </div>
 
-          <div class="col-md-7">
-            <p id="modalDescripcion" class="mb-4"></p>
+          <div class="mb-3">
+            <label for="tituloNoticia" class="form-label">Título</label>
+            <input type="text" class="form-control" id="tituloNoticia" name="titulo" >
           </div>
-        </div>
+          <div class="mb-3">
+            <label for="textoNoticia" class="form-label">Texto</label>
+            <textarea class="form-control" id="textoNoticia" name="texto" rows="4" ></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="imagenNoticia" class="form-label">Imagen</label>
+            <input type="file" class="form-control" id="imagenNoticia" name="imagen" accept="image/*">
+          </div>
+
+          <!-- Label para mostrar errores -->
+          <div class="mb-3">
+            <label id="errorNoticia" class="form-label text-danger d-none"></label>
+          </div>
+
+          <!-- Botones centrados -->
+          <div class="d-flex justify-content-between gap-2">
+              <button type="button" class="btn btn-secondary" id="prevDepto">&lt;</button>
+            <button type="submit" class="btn btn-success">Guardar</button>
+            
+        <button type="button" class="btn btn-secondary" id="nextDepto">&gt;</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
+  
 </div>
 
-<script>
-    const datos = <?php echo json_encode($datos, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>;
-</script>
-<script src="/cass/scripts/tarjetas.js"></script>
+
+
 <script src="/cass/scripts/bootstrap.bundle.min.js"></script>
+<script src="/cass/scripts/tarjetas.js"></script>
+
+<script>
+    const tipoUsuario = <?php echo json_encode($tipoUsuario); ?>;
+</script>
 </body>
 </html>

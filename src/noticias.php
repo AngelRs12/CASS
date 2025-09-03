@@ -111,7 +111,7 @@ function listarArchivos($ruta_relativa) {
           </div>
 
           <!-- Botones centrados -->
-          <div class="d-flex justify-content-between gap-2">
+          <div class="d-flex justify-content-between gap-2 modalF">
               <button type="button" class="btn btn-secondary" id="prevDepto">&lt;</button>
             <button type="submit" class="btn btn-success">Guardar</button>
             

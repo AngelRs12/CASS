@@ -4,28 +4,228 @@ document.addEventListener("DOMContentLoaded", () => {
     let registros = []; // array combinado de noticias y eventos
     let currentIndex = 0;
 
-    const modalNoticias = new bootstrap.Modal(document.getElementById('modalNoticias'));
+    // Rol (lee variable global inyectada o data-attr como fallback)
+    const isAdmin = String(typeof tipoUsuario !== "undefined" ? tipoUsuario : (document.body.getAttribute("data-tipo-usuario") || "0")) === "1";
 
+    const modalNoticias = new bootstrap.Modal(document.getElementById('modalNoticias'));
+(function reorganizarModal() {
+    const form = document.getElementById("formNuevaNoticia");
+    if (!form) return;
+
+    const imagen = document.getElementById("imagenNoticia")?.closest(".mb-3");
+    const radios = form.querySelector('input[name="tipo"]')?.closest(".mb-3");
+    const titulo = document.getElementById("tituloNoticia")?.closest(".mb-3");
+    const texto = document.getElementById("textoNoticia")?.closest(".mb-3");
+
+    // Detectamos el footer dentro del modal/form
+    const footer = form.querySelector(".modalF");
+
+    if (isAdmin) {
+    // --- Para admin: distribución vertical ---
+    [radios, titulo, texto, imagen].forEach(el => {
+        if (el) {
+            footer ? form.insertBefore(el, footer) : form.appendChild(el);
+        }
+    });
+} else {
+    // --- Para no admin: solo imagen izquierda + texto derecha ---
+    // Ocultar radios y titulo + sus labels
+    
+    [radios, titulo].forEach(el => {
+        if (el) {
+            el.style.display = "none";
+            const lbl = form.querySelector(`label[for="${el.querySelector("input,textarea,select")?.id || el.id}"]`);
+            if (lbl) lbl.style.display = "none";
+        }
+    });
+
+    
+    if (imagen) {
+        const lblImagen = form.querySelector(`label[for="${imagen.querySelector("input")?.id || imagen.id}"]`);
+        if (lblImagen) lblImagen.style.display = "none";
+    }
+    if (texto) {
+        const lblTexto = form.querySelector(`label[for="${texto.querySelector("textarea")?.id || texto.id}"]`);
+        if (lblTexto) lblTexto.style.display = "none";
+    }
+
+    const row = document.createElement("div");
+    row.className = "row";
+
+    const colImg = document.createElement("div");
+    colImg.className = "col-md-4 mb-3";
+    const colContent = document.createElement("div");
+    colContent.className = "col-md-8";
+
+    if (imagen) colImg.appendChild(imagen);
+    if (texto) colContent.appendChild(texto);
+
+    row.appendChild(colImg);
+    row.appendChild(colContent);
+
+    footer ? form.insertBefore(row, footer) : form.appendChild(row);
+}
+})();
+const modalTitulo = document.getElementById("nuevoNoticiaLabel"); // tu <h5> o <span> del modal
+const tituloInput = document.getElementById("tituloNoticia");
+if (tituloInput && modalTitulo) {
+    tituloInput.addEventListener("input", () => {
+        modalTitulo.textContent = tituloInput.value.trim() || "Añadir Nueva Noticia/Evento";
+    });
+}
     // Crear botón eliminar dinámicamente
     let btnEliminar = document.getElementById("btnEliminarNoticia");
-  if (!btnEliminar) {
-    btnEliminar = document.createElement("button");
-    btnEliminar.type = "button";
-    btnEliminar.className = "btn btn-danger"; // rojo
-    btnEliminar.id = "btnEliminarNoticia";
-    btnEliminar.textContent = "Eliminar";
-    btnEliminar.style.display = "none"; // oculto por defecto
+    if (!btnEliminar) {
+        btnEliminar = document.createElement("button");
+        btnEliminar.type = "button";
+        btnEliminar.className = "btn btn-danger"; // rojo
+        btnEliminar.id = "btnEliminarNoticia";
+        btnEliminar.textContent = "Eliminar";
+        btnEliminar.style.display = "none"; // oculto por defecto
 
-    // Insertarlo **después del botón "<"** y antes del botón Guardar
-    const modalFooter = document.querySelector("#modalNoticias .modal-body .d-flex");
-    if (modalFooter) {
-        const btnPrev = document.getElementById("prevDepto");
-        const btnGuardar = modalFooter.querySelector("button[type='submit']");
-        if (btnPrev && btnGuardar) {
-            modalFooter.insertBefore(btnEliminar, btnGuardar);
+        // Insertarlo **después del botón "<"** y antes del botón Guardar
+        const modalFooter = document.querySelector("#modalNoticias .modal-body .d-flex");
+        if (modalFooter) {
+            const btnPrev = document.getElementById("prevDepto");
+            const btnGuardar = modalFooter.querySelector("button[type='submit']");
+            if (btnPrev && btnGuardar) {
+                modalFooter.insertBefore(btnEliminar, btnGuardar);
+            }
         }
     }
-}
+
+    // ---------- Utilidades UI: modo lectura / modo edición ----------
+    // Crea (una vez) nodos de sólo lectura junto a los inputs y los deja ocultos
+    function ensureReadOnlyNodes() {
+        const form = document.getElementById("formNuevaNoticia");
+
+        // Título
+        if (!document.getElementById("roTitulo")) {
+            const el = document.createElement("p");
+            el.id = "roTitulo";
+            el.className = "form-control-plaintext d-none";
+            document.getElementById("tituloNoticia").insertAdjacentElement("afterend", el);
+        }
+
+        // Texto
+        if (!document.getElementById("roTexto")) {
+            const el = document.createElement("p");
+            el.id = "roTexto";
+            el.className = "form-control-plaintext d-none";
+            document.getElementById("textoNoticia").insertAdjacentElement("afterend", el);
+        }
+
+        // Imagen (contenedor para miniatura o texto)
+        if (!document.getElementById("roImagen")) {
+            const el = document.createElement("div");
+            el.id = "roImagen";
+            el.className = "d-none";
+            document.getElementById("imagenNoticia").insertAdjacentElement("afterend", el);
+        }
+
+        // Tipo (radios)
+        if (!document.getElementById("roTipo")) {
+            const firstTipo = form.querySelector('input[name="tipo"]');
+            if (firstTipo) {
+                const cont = firstTipo.closest(".mb-3");
+                const el = document.createElement("p");
+                el.id = "roTipo";
+                el.className = "form-control-plaintext d-none";
+                cont.appendChild(el);
+            }
+        }
+    }
+
+    function setModoLectura(item) {
+        ensureReadOnlyNodes();
+
+        const titulo = document.getElementById("tituloNoticia");
+        const texto = document.getElementById("textoNoticia");
+        const imagen = document.getElementById("imagenNoticia");
+        const radios = document.querySelectorAll('input[name="tipo"]');
+        const grupoTipo = radios.length ? radios[0].closest(".mb-3") : null;
+
+        const roTitulo = document.getElementById("roTitulo");
+        const roTexto = document.getElementById("roTexto");
+        const roImagen = document.getElementById("roImagen");
+        const roTipo = document.getElementById("roTipo");
+
+        // Ocultar inputs
+        if (titulo) titulo.classList.add("d-none");
+        if (texto) texto.classList.add("d-none");
+        if (imagen) imagen.classList.add("d-none");
+        if (grupoTipo) grupoTipo.querySelectorAll("input, label.form-check-label").forEach(n => n.classList.add("d-none"));
+
+        // Mostrar labels con contenido
+        roTitulo.textContent = (item?.titulo || titulo?.value || "").trim() || "(Sin título)";
+        roTitulo.classList.remove("d-none");
+
+        roTexto.textContent = (item?.contenido || texto?.value || "").trim() || "(Sin texto)";
+        roTexto.classList.remove("d-none");
+
+        // Imagen (miniatura si hay ruta; si no, texto)
+        roImagen.innerHTML = "";
+        const rutaImg = item?.ruta || "";
+        if (rutaImg) {
+            const imgPrev = document.createElement("img");
+            imgPrev.src = rutaImg;
+            imgPrev.alt = item?.titulo || "imagen";
+            imgPrev.className = "img-fluid rounded";
+            roImagen.appendChild(imgPrev);
+        } else {
+            const p = document.createElement("p");
+            p.className = "form-control-plaintext";
+            p.textContent = "(Sin imagen)";
+            roImagen.appendChild(p);
+        }
+        roImagen.classList.remove("d-none");
+
+        // Tipo
+        const tipoTxt = (item?.tipo || (document.querySelector('input[name="tipo"]:checked')?.value) || "").toString().toLowerCase();
+        roTipo.textContent = tipoTxt ? (tipoTxt.charAt(0).toUpperCase() + tipoTxt.slice(1)) : "(No definido)";
+        roTipo.classList.remove("d-none");
+
+        // Botones
+        const botonGuardar = document.querySelector('#formNuevaNoticia button[type="submit"]');
+        if (botonGuardar) botonGuardar.classList.add("d-none");
+        if (btnEliminar) btnEliminar.classList.add("d-none");
+        // Dejamos prev/next visibles para que pueda navegar en modo lectura
+        document.getElementById("prevDepto").classList.remove("d-none");
+        document.getElementById("nextDepto").classList.remove("d-none");
+    }
+
+    function setModoEdicion() {
+        ensureReadOnlyNodes();
+
+        const titulo = document.getElementById("tituloNoticia");
+        const texto = document.getElementById("textoNoticia");
+        const imagen = document.getElementById("imagenNoticia");
+        const radios = document.querySelectorAll('input[name="tipo"]');
+        const grupoTipo = radios.length ? radios[0].closest(".mb-3") : null;
+
+        const roTitulo = document.getElementById("roTitulo");
+        const roTexto = document.getElementById("roTexto");
+        const roImagen = document.getElementById("roImagen");
+        const roTipo = document.getElementById("roTipo");
+
+        // Mostrar inputs
+        if (titulo) titulo.classList.remove("d-none");
+        if (texto) texto.classList.remove("d-none");
+        if (imagen) imagen.classList.remove("d-none");
+        if (grupoTipo) grupoTipo.querySelectorAll("input, label.form-check-label").forEach(n => n.classList.remove("d-none"));
+
+        // Ocultar labels de solo lectura
+        roTitulo.classList.add("d-none");
+        roTexto.classList.add("d-none");
+        roImagen.classList.add("d-none");
+        roTipo.classList.add("d-none");
+
+        // Botones
+        const botonGuardar = document.querySelector('#formNuevaNoticia button[type="submit"]');
+        if (botonGuardar) botonGuardar.classList.remove("d-none");
+        // prev/next se mantienen
+    }
+    // -----------------------------------------------------------------
 
     function cargarTarjetas(tipo, contenedorId, documentos) {
         const contenedor = document.getElementById(contenedorId);
@@ -70,32 +270,50 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     cargarDatos();
+function mostrarRegistro(index) {
+    const item = registros[index];
+    if (!item) return;
 
-    function mostrarRegistro(index) {
-        const item = registros[index];
-        if (!item) return;
+    // Siempre rellenamos los inputs (aunque estén ocultos en modo lectura)
+    document.getElementById("idNoticia").value = item.id || "";
+    document.getElementById("tituloNoticia").value = item.titulo || "";
+    document.getElementById("textoNoticia").value = item.contenido || "";
 
-        document.getElementById("idNoticia").value = item.id || "";
-        document.getElementById("tituloNoticia").value = item.titulo;
-        document.getElementById("textoNoticia").value = item.contenido;
+    const inputImagen = document.getElementById("imagenNoticia");
+    inputImagen.style.display = "block";
+    inputImagen.value = ""; // limpiamos file input
 
-        const inputImagen = document.getElementById("imagenNoticia");
-        inputImagen.style.display = "block";
-        inputImagen.value = "";
-
-        if(item.tipo.toLowerCase() === "noticia") {
-            document.getElementById("tipoNoticia").checked = true;
-        } else if(item.tipo.toLowerCase() === "evento") {
-            document.getElementById("tipoEvento").checked = true;
-        }
-        document.querySelectorAll('input[name="tipo"]').forEach(r => r.disabled = false);
-
-        // Mostrar u ocultar botón eliminar
-        btnEliminar.style.display = item.id ? "inline-block" : "none";
-
-        currentIndex = index;
-        modalNoticias.show();
+    // Radios
+    if (item.tipo && item.tipo.toLowerCase() === "noticia") {
+        document.getElementById("tipoNoticia").checked = true;
+    } else if (item.tipo && item.tipo.toLowerCase() === "evento") {
+        document.getElementById("tipoEvento").checked = true;
     }
+
+    // Habilitar radios por defecto (modo edición); setModoLectura se encargará de ocultarlos si no-admin
+    document.querySelectorAll('input[name="tipo"]').forEach(r => r.disabled = false);
+
+    // Mostrar u ocultar botón eliminar (sólo admin)
+    btnEliminar.style.display = (isAdmin && item.id) ? "inline-block" : "none";
+
+    // **Actualizar título del modal para no-admin**
+    if (!isAdmin) {
+        const modalHeaderTitle = document.querySelector("#modalNoticias .modal-title.w-100");
+        if (modalHeaderTitle) {
+            modalHeaderTitle.textContent = item.titulo || "(Sin título)";
+        }
+    }
+
+    // Modo según rol
+    if (isAdmin) {
+        setModoEdicion();
+    } else {
+        setModoLectura(item);
+    }
+
+    currentIndex = index;
+    modalNoticias.show();
+}
 
     // Leer más / editar
     document.body.addEventListener('click', function(event) {
@@ -112,20 +330,24 @@ document.addEventListener("DOMContentLoaded", () => {
         mostrarRegistro(indexGlobal);
     });
 
-    // Botón "Nuevo"
-    if (tipoUsuario === 1 ){
-    document.getElementById("btnNuevoNoticiaAviso").addEventListener("click", () => {
-        document.getElementById("formNuevaNoticia").reset();
-        document.getElementById("idNoticia").value = "";
-        document.getElementById("imagenNoticia").style.display = "block";
-        document.querySelectorAll('input[name="tipo"]').forEach(r => r.disabled = false);
-        btnEliminar.style.display = "none"; // ocultar eliminar para nuevo registro
-        modalNoticias.show();
-    });
-  }
+    // Botón "Nuevo" (sólo admin)
+    if (isAdmin) {
+        document.getElementById("btnNuevoNoticiaAviso").addEventListener("click", () => {
+            document.getElementById("formNuevaNoticia").reset();
+            document.getElementById("idNoticia").value = "";
+            document.getElementById("imagenNoticia").style.display = "block";
+            document.querySelectorAll('input[name="tipo"]').forEach(r => r.disabled = false);
+            btnEliminar.style.display = "none"; // ocultar eliminar para nuevo registro
+            setModoEdicion(); // aseguramos volver a edición
+            modalNoticias.show();
+        });
+    }
+
     // Guardar / actualizar
     document.getElementById("formNuevaNoticia").addEventListener("submit", function(e) {
         e.preventDefault();
+
+        if (!isAdmin) return; // no-admin no puede guardar
 
         const id = document.getElementById("idNoticia").value.trim();
         const titulo = document.getElementById("tituloNoticia").value.trim();
@@ -146,8 +368,8 @@ document.addEventListener("DOMContentLoaded", () => {
         formData.append("titulo", titulo);
         formData.append("texto", texto);
         formData.append("tipo", tipo);
-        if(imagen) formData.append("imagen", imagen);
-        if(id) formData.append("id", id);
+        if (imagen) formData.append("imagen", imagen);
+        if (id) formData.append("id", id);
 
         fetch("/cass/auth/noticias.php", { method: "POST", body: formData })
             .then(res => res.json())
@@ -172,8 +394,10 @@ document.addEventListener("DOMContentLoaded", () => {
         if (currentIndex < registros.length - 1) mostrarRegistro(currentIndex + 1);
     });
 
-    // Eliminar
+    // Eliminar (sólo admin)
     btnEliminar.addEventListener("click", () => {
+        if (!isAdmin) return;
+
         const id = document.getElementById("idNoticia").value;
         if (!id) return;
 
